@@ -1,5 +1,5 @@
-Задача №1
-Черняков Евгений Олегович, Б82
-st128891@student.spbu.ru
-make -f Makefile
+Задача №1\n
+Черняков Евгений Олегович, Б82\n
+st128891@student.spbu.ru\n
+make -f Makefile\n
 ./hello
