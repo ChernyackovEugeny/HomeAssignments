@@ -1,7 +1,7 @@
 #include "heading.hpp"
 #include <iostream>
 
-int say_hello() {
+void say_hello() {
 	using namespace std;
 	cout << "Hello, world!" << endl;
 	while (true) {
@@ -9,5 +9,4 @@ int say_hello() {
 		cin >> x;
 		cout << "Hello, " << x << "!" << endl;
 	}
-	return 0;
 }
