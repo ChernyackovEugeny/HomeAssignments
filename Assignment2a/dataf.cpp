@@ -25,4 +25,6 @@ void dataf() {
 	outfile.open("temppdf.pdf", std::ios::binary | std::ios::out);
 	
 	outfile.write(q, size);
+	
+	delete[] q;
 }	
