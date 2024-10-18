@@ -1,3 +1,5 @@
+// the primary function
+
 #include <iostream>
 #include <fstream>
 #include <filesystem>
