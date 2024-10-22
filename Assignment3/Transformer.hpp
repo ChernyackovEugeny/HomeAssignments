@@ -2,10 +2,11 @@
 #define TRANSFORMER
 #include <string>
 #include "Hp.hpp"
+#include "Gun.hpp"
 
 class Transformer {
 	public:
-	    Transformer(std::string label, int armor, int ammo, int courage, int hp=100);
+	    Transformer(std::string label, int armor, int ammo, int courage, int hp);
 	    void setAmmo(int ammo);
 	    int getAmmo();
 	    void setLabel(std::string label);
@@ -18,7 +19,7 @@ class Transformer {
 	    void setHp(int hp);
 	    int getHp();
 	    
-	    void setGun(std::string);
+	    void setGun(Gun* weap);
 	    std::string getGun();
 	    
 	    void fire();

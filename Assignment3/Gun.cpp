@@ -5,10 +5,11 @@
 Gun::Gun(std::string name) {
     gun_name_ = name;
 }
-void setGun(std::string gun) {
+void Gun::setGun(std::string gun) {
     gun_name_ = gun;
 }
-std::string getGun() {
+std::string Gun::getGun() {
     return gun_name_;
 }
+Gun::~Gun() {}
 

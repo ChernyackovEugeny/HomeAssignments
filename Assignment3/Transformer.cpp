@@ -48,10 +48,13 @@ int Transformer::getHp() {
 }
 
 
-void getGun(std::string weap) {
-    *gun = &Gun(weap)
+void Transformer::setGun(Gun* weap) {
+    weapon = weap;
 }
-    
+std::string Transformer::getGun() {
+    return weapon->getGun();
+}
+   
 
 void Transformer::fire() {
     return;

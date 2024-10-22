@@ -3,13 +3,14 @@
 
 class Hp {
     public:
-        Hp(int healthpoints = 100);
+    	Hp();
+        Hp(int hp);
         int getHp();
         void setHp(int hp);
 
         ~Hp();
     private:
-        int healthpoints_;
+        int hps_;
 };
 
 #endif

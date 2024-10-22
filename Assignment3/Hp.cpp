@@ -1,17 +1,14 @@
 #include <iostream>
-#include <string>
 #include "Hp.hpp"
-
-Hp::Hp(int healthpoints) {
-    healthpoints_ = healthpoints;
+#include <string>
+Hp::Hp() {}
+Hp::Hp(int hp) {
+    hps_ = hp;
 }
 int Hp::getHp() {
-    return healthpoints_;
+    return hps_;
 }
 void Hp::setHp(int hp) {
-    healthpoints_ = hp;
+    hps_ = hp;
 }
 Hp::~Hp() {}
-
-int healthpoints_;
-
