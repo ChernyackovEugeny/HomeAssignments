@@ -1,3 +1,5 @@
+// header of the primary class
+
 #ifndef TRANSFORMER
 #define TRANSFORMER
 #include <string>

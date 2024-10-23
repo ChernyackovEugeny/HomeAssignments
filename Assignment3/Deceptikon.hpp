@@ -1,3 +1,5 @@
+// header of inherited class of Transformer
+
 #ifndef DECEPTIKON
 #define DECEPTIKON
 #include <string>
@@ -19,8 +21,8 @@ class Deceptikon: public Transformer {
         ~Deceptikon();
         
 	private:
-	    int lleg_;
 	    int rleg_;
+	    int lleg_;
 };
 
 #endif

@@ -1,3 +1,5 @@
+// realisation of the class with association
+
 #include "Gun.hpp"
 
 Gun::Gun(std::string name) {

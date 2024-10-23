@@ -1,3 +1,5 @@
+// header of the class with composition
+
 #ifndef HP
 #define HP
 

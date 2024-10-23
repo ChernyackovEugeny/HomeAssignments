@@ -1,3 +1,5 @@
+// realisation of the class with composition
+
 #include "Hp.hpp"
 #include <string>
 Hp::Hp() {}

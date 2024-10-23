@@ -1,3 +1,5 @@
+// realisation of the main function
+
 #include <iostream>
 #include <string>
 #include "Transformer.hpp"

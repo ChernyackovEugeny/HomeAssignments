@@ -1,5 +1,6 @@
-#include "Transformer.hpp"
+// realisation of the primary class
 
+#include "Transformer.hpp"
 
 Transformer::Transformer(std::string label, int armor, int ammo, int courage, int hp) {
     label_ = label;

@@ -1,3 +1,5 @@
+// header of the class with association
+
 #ifndef GUN
 #define GUN
 #include <string>

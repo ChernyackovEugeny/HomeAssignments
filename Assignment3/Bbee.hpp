@@ -1,3 +1,7 @@
+// header of inherited class of Transformer
+
+#ifndef BBEE
+#define BBEE
 #include "Transformer.hpp"
 
 class Bbee : public Transformer {
@@ -15,6 +19,8 @@ class Bbee : public Transformer {
         ~Bbee();
     
     private:
-        int lear_;
         int rear_;
+        int lear_;
 };
+
+#endif

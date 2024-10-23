@@ -1,3 +1,5 @@
+// realisation of inherited class of Transformer
+
 #include "Deceptikon.hpp"
 
 Deceptikon::Deceptikon(std::string label, int armor, int ammo, int courage, int hp, int rleg, int lleg) : Transformer(label, armor, ammo, courage, hp), rleg_(rleg), lleg_(lleg) {}

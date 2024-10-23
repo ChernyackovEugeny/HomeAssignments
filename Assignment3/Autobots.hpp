@@ -1,3 +1,7 @@
+// header of inherited class of Transformer
+
+#ifndef AUTOBOTS
+#define AUTOBOTS
 #include "Transformer.hpp"
 
 class Autobots : public Transformer {
@@ -15,6 +19,8 @@ class Autobots : public Transformer {
         ~Autobots();
     
     private:
-        int larm_;
         int rarm_;
+        int larm_;
 };
+
+#endif
