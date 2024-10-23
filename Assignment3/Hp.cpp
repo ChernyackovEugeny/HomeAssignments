@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Hp.hpp"
 #include <string>
 Hp::Hp() {}

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Transformer.hpp"
 
 
@@ -8,7 +7,7 @@ Transformer::Transformer(std::string label, int armor, int ammo, int courage, in
     ammo_ = ammo;
     courage_ = courage;
     
-    healthpoints = Hp(hp);
+    healthpoints_ = Hp(hp);
 }
 
 void Transformer::setAmmo(int ammo) {
@@ -41,18 +40,18 @@ int Transformer::getCourage() {
 
 
 void Transformer::setHp(int hp) {
-    healthpoints.setHp(hp);
+    healthpoints_.setHp(hp);
 }
 int Transformer::getHp() {
-    return healthpoints.getHp();
+    return healthpoints_.getHp();
 }
 
 
 void Transformer::setGun(Gun* weap) {
-    weapon = weap;
+    weapon_ = weap;
 }
 std::string Transformer::getGun() {
-    return weapon->getGun();
+    return weapon_->getGun();
 }
    
 

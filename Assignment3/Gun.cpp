@@ -1,6 +1,4 @@
-#include <iostream>
 #include "Gun.hpp"
-#include <string>
 
 Gun::Gun(std::string name) {
     gun_name_ = name;

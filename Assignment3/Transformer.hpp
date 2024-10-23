@@ -32,9 +32,9 @@ class Transformer {
 	    int ammo_;
 	    int courage_;
 	
-	    Hp healthpoints;
+	    Hp healthpoints_;
 	    
-	    Gun* weapon;
+	    Gun* weapon_;
 };
 
 #endif

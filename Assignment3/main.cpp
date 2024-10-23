@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include "Transformer.hpp"
-#include "deceptikon.hpp"
+#include "Deceptikon.hpp"
+#include "Autobots.hpp"
+#include "Bbee.hpp"
 
 int main() {
 
