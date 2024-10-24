@@ -9,3 +9,7 @@ There are one primary function, 2 classes with different association are include
 make
 ## Run
 ./mikmik
+## Build tests
+make test
+## Run tests
+./testik

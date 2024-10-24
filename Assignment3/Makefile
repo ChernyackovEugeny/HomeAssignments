@@ -3,6 +3,9 @@ CXXFLAGS = -Wall -Wextra
 
 main: Transformer.o Deceptikon.o Bbee.o Autobots.o main.o Gun.o Hp.o
 	$(CXX) -o mikmik Transformer.o Deceptikon.o Bbee.o Autobots.o main.o Gun.o Hp.o
+	
+test: Transformer.o Deceptikon.o Bbee.o Autobots.o Gun.o Hp.o tests.cpp
+	$(CXX) $(CXXFLAGS) -o testik tests.cpp Transformer.o Deceptikon.o Bbee.o Autobots.o Gun.o Hp.o -lgtest -lgtest_main -pthread
 
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -29,6 +32,6 @@ clean:
 	rm -f *.o mikmik
 
 cleanall: clean
-	rm -f *.log *.d *.tmp
+	rm -f *.log *.d *.tmp testik
 
 
