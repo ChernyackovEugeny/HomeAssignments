@@ -2,10 +2,12 @@
 
 #include <gtest/gtest.h>
 #include <iostream>
+#include <sstream>
 #include "Transformer.hpp"
 #include "Autobots.hpp"
 #include "Bbee.hpp"
 #include "Deceptikon.hpp"
+#include "opers.hpp"
 
 TEST(TransformerTest, Transformer) {
     Transformer boop("BumbleBee", 10, 20, 30, 40);
@@ -40,6 +42,31 @@ TEST(BbeeTest, Bbee) {
     EXPECT_EQ(be.getRear(), 91);
     be.setRear(100);
     EXPECT_EQ(be.getRear(), 100);
+}
+
+TEST(OperatorcoutTest, Cout) {
+	Transformer bub("BumbleBee", 10, 20, 30, 40);
+
+	std::ostringstream output;
+	std::streambuf* oldcout = std::cout.rdbuf(output.rdbuf());
+	
+	std::cout << bub;
+	
+	std::cout.rdbuf(oldcout);
+	EXPECT_EQ(output.str(), "BumbleBee");
+}
+
+TEST(OperatorequalTest, Equal) {
+    Transformer bub("BumbleBee", 10, 20, 30, 40);
+    Transformer err("Bee", 10, 20, 30, 100);
+    
+    EXPECT_EQ(bub < err, true);
+    EXPECT_EQ(err >= bub, true);
+}
+
+TEST(ConstructorTest, Construct) {
+	Transformer f(true);
+	EXPECT_EQ(f.getLabel(), "Dead");
 }
 
 int main(int argc, char **argv) {

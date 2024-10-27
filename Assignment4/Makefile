@@ -5,7 +5,7 @@ LGTESTFLAGS = -lgtest -lgtest_main -pthread
 
 DEPS = $(wildcard *.hpp)
 
-OBJ = Autobots.o Bbee.o Deceptikon.o Gun.o Hp.o Transformer.o
+OBJ = Autobots.o Bbee.o Deceptikon.o Gun.o Hp.o Transformer.o opers.o
 TEST_OBJ = tests.o
 
 TEST_PROJECT = testik
