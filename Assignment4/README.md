@@ -4,7 +4,7 @@
 ## Contacts
 st128891@student.spbu.ru
 ##Description
-There are one primary function, 2 classes with different association are included. There are also 3 inherited classes
+The distinguishing between assignment 3 is new makefile, overloading of the Transformer constructor and overloading operators <<, <, >, <=, >= for class Transformer 
 ## Build
 make
 ## Run
