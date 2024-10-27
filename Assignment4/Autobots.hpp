@@ -7,10 +7,10 @@
 class Autobots : public Transformer {
     public:
         Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm);
-        int getRarm();
+        int getRarm() const;
         void setRarm(int arm);
         
-        int getLarm();
+        int getLarm() const;
         void setLarm(int arm);
         
         bool transform();

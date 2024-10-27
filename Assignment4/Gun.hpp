@@ -7,7 +7,7 @@ class Gun {
 	public:
 	    Gun(std::string name);
 	    void setGun(std::string gun);
-	    std::string getGun();
+	    std::string getGun() const;
 	    ~Gun();
 	private:
 	    std::string gun_name_;

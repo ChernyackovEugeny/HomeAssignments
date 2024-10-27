@@ -4,13 +4,13 @@
 
 Autobots::Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm) : Transformer(label, armor, ammo, courage, hp), rarm_(rarm), larm_(larm) {}
 
-int Autobots::getRarm() {
+int Autobots::getRarm() const {
     return rarm_;
 }
 void Autobots::setRarm(int arm) {
     rarm_ = arm;
 }
-int Autobots::getLarm() {
+int Autobots::getLarm() const {
     return larm_;
 }
 void Autobots::setLarm(int arm) {

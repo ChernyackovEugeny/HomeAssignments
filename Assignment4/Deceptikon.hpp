@@ -9,10 +9,10 @@ class Deceptikon: public Transformer {
 	public:
 	    Deceptikon(std::string label, int armor, int ammo, int courage, int hp, int rleg, int lleg);
 	    
-	    int getLleg();
+	    int getLleg() const;
 	    void setLleg(int lleg);
 	    
-	    int getRleg();
+	    int getRleg() const;
 	    void setRleg(int rleg);
 	    
 	    bool transform();

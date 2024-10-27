@@ -6,7 +6,7 @@ Hp::Hp() {}
 Hp::Hp(int hp) {
     hps_ = hp;
 }
-int Hp::getHp() {
+int Hp::getHp() const {
     return hps_;
 }
 void Hp::setHp(int hp) {

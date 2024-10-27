@@ -7,7 +7,7 @@ class Hp {
     public:
     	Hp();
         Hp(int hp);
-        int getHp();
+        int getHp() const;
         void setHp(int hp);
 
         ~Hp();
