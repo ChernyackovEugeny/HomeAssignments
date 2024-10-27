@@ -4,23 +4,24 @@
 #define AUTOBOTS
 #include "Transformer.hpp"
 
-class Autobots : public Transformer {
-    public:
-        Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm);
-        int getRarm() const;
-        void setRarm(int arm);
-        
-        int getLarm() const;
-        void setLarm(int arm);
-        
-        bool transform();
-        bool pikpik();
-        
-        ~Autobots();
-    
-    private:
-        int rarm_;
-        int larm_;
+class Autobots : public Transformer
+{
+public:
+    Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm);
+    int getRarm() const;
+    void setRarm(int arm);
+
+    int getLarm() const;
+    void setLarm(int arm);
+
+    bool transform();
+    bool pikpik();
+
+    ~Autobots();
+
+private:
+    int rarm_;
+    int larm_;
 };
 
 #endif

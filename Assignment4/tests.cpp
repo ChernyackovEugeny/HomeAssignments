@@ -9,7 +9,8 @@
 #include "Deceptikon.hpp"
 #include "opers.hpp"
 
-TEST(TransformerTest, Transformer) {
+TEST(TransformerTest, Transformer)
+{
     Transformer boop("BumbleBee", 10, 20, 30, 40);
     Gun bush("boom");
     EXPECT_EQ(boop.getHp(), 40);
@@ -20,7 +21,8 @@ TEST(TransformerTest, Transformer) {
     EXPECT_EQ(boop.getGun(), "boom");
 }
 
-TEST(AutobotTest, Autobot) {
+TEST(AutobotTest, Autobot)
+{
     Autobots beep("Miki", 10, 20, 30, 40, 91, 92);
     EXPECT_EQ(beep.getLabel(), "Miki");
     EXPECT_EQ(beep.getRarm(), 91);
@@ -28,7 +30,8 @@ TEST(AutobotTest, Autobot) {
     EXPECT_EQ(beep.getRarm(), 100);
 }
 
-TEST(DeceptikonTest, Deceptikon) {
+TEST(DeceptikonTest, Deceptikon)
+{
     Deceptikon buck("Pop", 10, 20, 30, 40, 91, 92);
     EXPECT_EQ(buck.getLabel(), "Pop");
     EXPECT_EQ(buck.getRleg(), 91);
@@ -36,7 +39,8 @@ TEST(DeceptikonTest, Deceptikon) {
     EXPECT_EQ(buck.getRleg(), 100);
 }
 
-TEST(BbeeTest, Bbee) {
+TEST(BbeeTest, Bbee)
+{
     Bbee be("Bbee", 10, 20, 30, 40, 91, 92);
     EXPECT_EQ(be.getLabel(), "Bbee");
     EXPECT_EQ(be.getRear(), 91);
@@ -44,32 +48,36 @@ TEST(BbeeTest, Bbee) {
     EXPECT_EQ(be.getRear(), 100);
 }
 
-TEST(OperatorcoutTest, Cout) {
-	Transformer bub("BumbleBee", 10, 20, 30, 40);
+TEST(OperatorcoutTest, Cout)
+{
+    Transformer bub("BumbleBee", 10, 20, 30, 40);
 
-	std::ostringstream output;
-	std::streambuf* oldcout = std::cout.rdbuf(output.rdbuf());
-	
-	std::cout << bub;
-	
-	std::cout.rdbuf(oldcout);
-	EXPECT_EQ(output.str(), "BumbleBee");
+    std::ostringstream output;
+    std::streambuf* oldcout = std::cout.rdbuf(output.rdbuf());
+
+    std::cout << bub;
+
+    std::cout.rdbuf(oldcout);
+    EXPECT_EQ(output.str(), "BumbleBee");
 }
 
-TEST(OperatorequalTest, Equal) {
+TEST(OperatorequalTest, Equal)
+{
     Transformer bub("BumbleBee", 10, 20, 30, 40);
     Transformer err("Bee", 10, 20, 30, 100);
-    
+
     EXPECT_EQ(bub < err, true);
     EXPECT_EQ(err >= bub, true);
 }
 
-TEST(ConstructorTest, Construct) {
-	Transformer f(true);
-	EXPECT_EQ(f.getLabel(), "Dead");
+TEST(ConstructorTest, Construct)
+{
+    Transformer f(true);
+    EXPECT_EQ(f.getLabel(), "Dead");
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
