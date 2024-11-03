@@ -1,12 +1,10 @@
+// the initialising the variables of the structures
+
 #include "funcheader.hpp"
 #include "structs.hpp"
-#include <iostream>
-#include <fstream>
-#include <cstdint>
-#include <cstring>
 
 void init(std::ifstream& input, Bitmapinfo* bitmap, Fileheader* header) {
-	input.read(reinterpret_cast<char*>(&header->Ftype), sizeof(header->Ftype));
+    input.read(reinterpret_cast<char*>(&header->Ftype), sizeof(header->Ftype));
     input.read(reinterpret_cast<char*>(&header->Fsize), sizeof(header->Fsize));
     input.read(reinterpret_cast<char*>(&header->Rez1), sizeof(header->Rez1));
     input.read(reinterpret_cast<char*>(&header->Rez2), sizeof(header->Rez2));

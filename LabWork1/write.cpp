@@ -1,12 +1,10 @@
+// writing into the file
+
 #include "funcheader.hpp"
 #include "structs.hpp"
-#include <iostream>
-#include <fstream>
-#include <cstdint>
-#include <cstring>
 
 void write(std::ofstream& rotate, Bitmapinfo* bitmap, Fileheader* header) {
-	rotate.write(reinterpret_cast<char*>(&header->Ftype), sizeof(header->Ftype));
+    rotate.write(reinterpret_cast<char*>(&header->Ftype), sizeof(header->Ftype));
     rotate.write(reinterpret_cast<char*>(&header->Fsize), sizeof(header->Fsize));
     rotate.write(reinterpret_cast<char*>(&header->Rez1), sizeof(header->Rez1));
     rotate.write(reinterpret_cast<char*>(&header->Rez2), sizeof(header->Rez2));

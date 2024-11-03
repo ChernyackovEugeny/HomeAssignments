@@ -1,9 +1,13 @@
+// the header of the structs
+
 #ifndef STRUCTS
 #define STRUCTS
 
+#include <iostream>
+#include <fstream>
 #include <cstdint>
 #include <cstring>
-#include <fstream>
+#include <cmath>
 
 struct Fileheader {
 	uint16_t Ftype; // file type
