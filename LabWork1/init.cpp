@@ -3,13 +3,14 @@
 #include "funcheader.hpp"
 #include "structs.hpp"
 
-void init(std::ifstream& input, Bitmapinfo* bitmap, Fileheader* header) {
+void init(std::ifstream& input, Bitmapinfo* bitmap, Fileheader* header)
+{
     input.read(reinterpret_cast<char*>(&header->Ftype), sizeof(header->Ftype));
     input.read(reinterpret_cast<char*>(&header->Fsize), sizeof(header->Fsize));
     input.read(reinterpret_cast<char*>(&header->Rez1), sizeof(header->Rez1));
     input.read(reinterpret_cast<char*>(&header->Rez2), sizeof(header->Rez2));
     input.read(reinterpret_cast<char*>(&header->Px_begin), sizeof(header->Px_begin));
-    
+
     input.read(reinterpret_cast<char*>(&bitmap->biSize), sizeof(bitmap->biSize));
     input.read(reinterpret_cast<char*>(&bitmap->biWidth), sizeof(bitmap->biWidth));
     input.read(reinterpret_cast<char*>(&bitmap->biHeight), sizeof(bitmap->biHeight));

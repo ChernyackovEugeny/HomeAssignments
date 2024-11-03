@@ -3,7 +3,8 @@
 #include "funcheader.hpp"
 #include "structs.hpp"
 
-void write(std::ofstream& rotate, Bitmapinfo* bitmap, Fileheader* header) {
+void write(std::ofstream& rotate, Bitmapinfo* bitmap, Fileheader* header)
+{
     rotate.write(reinterpret_cast<char*>(&header->Ftype), sizeof(header->Ftype));
     rotate.write(reinterpret_cast<char*>(&header->Fsize), sizeof(header->Fsize));
     rotate.write(reinterpret_cast<char*>(&header->Rez1), sizeof(header->Rez1));
