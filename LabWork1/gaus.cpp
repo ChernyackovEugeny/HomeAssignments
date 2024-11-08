@@ -105,8 +105,8 @@ void apply_gaus(double** kernel, Bitmapinfo* bitmap, Fileheader* header, uint8_t
                         double kvalue = kernel[halfSize+ki][halfSize+kj];
 
                         red_sum += gaus_data[pixelIndex] * kvalue;
-                        green_sum += gaus_data[pixelIndex] * kvalue;
-                        blue_sum += gaus_data[pixelIndex] * kvalue;
+                        green_sum += gaus_data[pixelIndex+1] * kvalue;
+                        blue_sum += gaus_data[pixelIndex+2] * kvalue;
                     }
                 }
             }
