@@ -9,11 +9,12 @@ Task::Task() {
     bitmap = new Bitmapinfo;
     read();
 }
+// То что нельзя ввести свое имя файла не очень хорошо
 void Task::read() {
     std::ifstream input;
     
     input.open("example.bmp", std::ios::binary | std::ios::in);
-    
+    // Ты же инициализируешь их в конструкторе. Те указатели теряются и происходит утечка памяти
     header = new Fileheader;
     bitmap = new Bitmapinfo;
     
@@ -21,7 +22,7 @@ void Task::read() {
     input.read(reinterpret_cast<char*>(bitmap), sizeof(*bitmap));
 
     rowSize = (bitmap->biWidth * bitmap->biBitCount / 8 + 3) & ~3;
-
+    // Обычно все-таки берут char, который по стандарту должен иметь минимальный адресуемый размер (1 байт)
     biTable = new uint8_t[rowSize*bitmap->biHeight];
 
     for (int i = 0; i < bitmap->biHeight; i++)
@@ -30,7 +31,10 @@ void Task::read() {
     }
 
 }
-
+// А один это влево или вправо? 
+// "- Извините, а как пройти в библиотеку?
+//  - Сначала дойдите до конца улицы, а потом 1
+//  - !?"
 void Task::rotate1() {
     std::ofstream rotate1;
     rotate1.open("rotate1.bmp", std::ios::binary | std::ios::out);
@@ -43,9 +47,9 @@ void Task::rotate1() {
 
     bitmap->biWidth = origHeight;
     bitmap->biHeight = origWidth;
-
+    // А ты сможешь ответить на занятии, что эта строка делает? Я ж спрошу
     rowSize = (bitmap->biWidth * bitmap->biBitCount / 8 + 3) & ~3;
-
+    
     bitmap->biSizeImage = rowSize * bitmap->biHeight;
     header->Fsize = sizeof(Fileheader) + sizeof(Bitmapinfo) + bitmap->biSizeImage;
 
@@ -70,7 +74,10 @@ void Task::rotate1() {
     {
         rotate1.write(reinterpret_cast<char*>(&rotated1_data[rowSize*i]), rowSize);
     }
-    
+    // Строки ниже дают понять, что нужно как-то иначе использовать класс картинки
+    // Если бы я дважды хотел повернуть картинку в одну сторону, то как бы я смог это сделать?
+    // Как будто этот метод должен возвращать полноценную копию, к которой в свою очередь снова можно 
+    // применить все операции
     rowSize = origrowSize;
     bitmap->biWidth = origWidth;
     bitmap->biHeight = origHeight;
@@ -128,8 +135,9 @@ void Task::rotate2() {
 
     delete[] rotated2_data;
 }
-
+// ApplyGaussianBlur -- вот это хорошее название
 void Task::gaus() {
+    // Мне кажется, это должно быть параметром класса, который задается конструктором
     kSize = 3;
     sigma = 1.0;
     
@@ -140,7 +148,8 @@ void Task::gaus() {
     }
     create_kernel();
     apply_gaus();
-    
+    // Чтобы не заниматься такой работой, используй стандартные контейнеры или умные указатели
+    // Не хочу видеть в вашем коде никаких new или delete
     for (int i = 0; i < kSize; i++)
     {
         delete[] kernel[i];
@@ -180,7 +189,7 @@ void Task::apply_gaus() {
     uint32_t origbiSizeImage = bitmap->biSizeImage;
     uint32_t origFsize = header->Fsize;
     int origrowSize = rowSize;
-
+    // А зачем тут опять происходит поворот? Функция должна делать только что-то одно
     bitmap->biWidth = origHeight;
     bitmap->biHeight = origWidth;
 
