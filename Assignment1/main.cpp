@@ -1,11 +1,13 @@
 /* Chernyackov Eugeny st128891@spbu.ru
-project hello
+Assignment 1
 */
 
-#include "heading.hpp"
 #include <iostream>
 
-int main() {
-	say_hello();
-	return 0;
+#include "heading.hpp"
+
+int main()
+{
+    say_hello();
+    return 0;
 }

@@ -1,5 +1,5 @@
 /* Chernyackov Eugeny st128891@spbu.ru
-project hello
+Assignment 1
 */
 
 #ifndef HEADING_H
