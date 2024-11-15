@@ -6,8 +6,7 @@ Assignment 1
 
 #include "heading.hpp"
 
-int main()
-{
+int main() {
     say_hello();
     return 0;
 }

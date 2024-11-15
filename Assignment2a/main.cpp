@@ -7,8 +7,7 @@ home assignment 2a
 
 #include "reversedata.hpp"
 
-int main()
-{
+int main() {
     std::string name;
     std::cout << "Please, enter the name of your file to be reversed." << std::endl;
     std::cin >> name;

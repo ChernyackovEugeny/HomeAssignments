@@ -9,8 +9,7 @@ home assignment 2a
 #include <iostream>
 #include <string>
 
-void reversedata(std::string name)
-{
+void reversedata(std::string name) {
     int size = std::filesystem::file_size(name);
     std::unique_ptr<char[]> data = std::make_unique<char[]>(size);
 
@@ -19,8 +18,7 @@ void reversedata(std::string name)
 
     infile.read(data.get(), size);
 
-    for (int i = 0; i < int(size / 2); i++)
-    {
+    for (int i = 0; i < int(size / 2); i++) {
         char tmp = data[i];
         data[i] = data[size - i - 1];
         data[size - i - 1] = tmp;

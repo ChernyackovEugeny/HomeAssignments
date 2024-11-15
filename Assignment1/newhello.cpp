@@ -6,12 +6,10 @@ Assignment 1
 
 #include "heading.hpp"
 
-void say_hello()
-{
+void say_hello() {
     using namespace std;
     cout << "Hello, world!" << endl;
-    while (true)
-    {
+    while (true) {
         string x;
         cin >> x;
         cout << "Hello, " << x << "!" << endl;
