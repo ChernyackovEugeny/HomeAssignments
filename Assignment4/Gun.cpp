@@ -2,17 +2,14 @@
 
 #include "Gun.hpp"
 
-Gun::Gun(std::string name)
-{
+Gun::Gun(std::string name) {
     gun_name_ = name;
 }
-void Gun::setGun(std::string gun)
-{
+void Gun::setGun(std::string gun) {
     gun_name_ = gun;
 }
-std::string Gun::getGun() const
-{
+std::string Gun::getGun() const {
     return gun_name_;
 }
-Gun::~Gun() {}
-
+Gun::~Gun() {
+}

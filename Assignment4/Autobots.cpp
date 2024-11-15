@@ -2,33 +2,29 @@
 
 #include "Autobots.hpp"
 
-Autobots::Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm) : Transformer(label, armor, ammo, courage, hp), rarm_(rarm), larm_(larm) {}
+Autobots::Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm)
+    : Transformer(label, armor, ammo, courage, hp), rarm_(rarm), larm_(larm) {
+}
 
-int Autobots::getRarm() const
-{
+int Autobots::getRarm() const {
     return rarm_;
 }
-void Autobots::setRarm(int arm)
-{
+void Autobots::setRarm(int arm) {
     rarm_ = arm;
 }
-int Autobots::getLarm() const
-{
+int Autobots::getLarm() const {
     return larm_;
 }
-void Autobots::setLarm(int arm)
-{
+void Autobots::setLarm(int arm) {
     larm_ = arm;
 }
 
-bool Autobots::transform()
-{
+bool Autobots::transform() {
     return true;
 }
-bool Autobots::pikpik()
-{
+bool Autobots::pikpik() {
     return false;
 }
 
-Autobots::~Autobots() {}
-
+Autobots::~Autobots() {
+}
