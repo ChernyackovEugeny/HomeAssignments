@@ -11,5 +11,5 @@ void Gun::setGun(std::string gun) {
 std::string Gun::getGun() {
     return gun_name_;
 }
-Gun::~Gun() {}
-
+Gun::~Gun() {
+}

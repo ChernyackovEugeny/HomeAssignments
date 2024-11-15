@@ -2,7 +2,9 @@
 
 #include "Autobots.hpp"
 
-Autobots::Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm) : Transformer(label, armor, ammo, courage, hp), rarm_(rarm), larm_(larm) {}
+Autobots::Autobots(std::string label, int armor, int ammo, int courage, int hp, int rarm, int larm)
+    : Transformer(label, armor, ammo, courage, hp), rarm_(rarm), larm_(larm) {
+}
 
 int Autobots::getRarm() {
     return rarm_;
@@ -24,5 +26,5 @@ bool Autobots::pikpik() {
     return false;
 }
 
-Autobots::~Autobots() {}
-
+Autobots::~Autobots() {
+}

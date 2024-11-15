@@ -7,7 +7,7 @@ Transformer::Transformer(std::string label, int armor, int ammo, int courage, in
     armor_ = armor;
     ammo_ = ammo;
     courage_ = courage;
-    
+
     healthpoints_ = Hp(hp);
 }
 
@@ -39,7 +39,6 @@ int Transformer::getCourage() {
     return courage_;
 }
 
-
 void Transformer::setHp(int hp) {
     healthpoints_.setHp(hp);
 }
@@ -47,14 +46,12 @@ int Transformer::getHp() {
     return healthpoints_.getHp();
 }
 
-
-void Transformer::setGun(Gun* weap) {
+void Transformer::setGun(Gun *weap) {
     weapon_ = weap;
 }
 std::string Transformer::getGun() {
     return weapon_->getGun();
 }
-   
 
 void Transformer::fire() {
     return;
@@ -63,4 +60,5 @@ bool Transformer::move() {
     return true;
 }
 
-Transformer::~Transformer() {}
+Transformer::~Transformer() {
+}

@@ -1,11 +1,13 @@
 // tests
 
 #include <gtest/gtest.h>
+
 #include <iostream>
-#include "Transformer.hpp"
+
 #include "Autobots.hpp"
 #include "Bbee.hpp"
 #include "Deceptikon.hpp"
+#include "Transformer.hpp"
 
 TEST(TransformerTest, Transformer) {
     Transformer boop("BumbleBee", 10, 20, 30, 40);

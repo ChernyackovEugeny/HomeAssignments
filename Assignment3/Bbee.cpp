@@ -2,7 +2,9 @@
 
 #include "Bbee.hpp"
 
-Bbee::Bbee(std::string label, int armor, int ammo, int courage, int hp, int rear, int lear) : Transformer(label, armor, ammo, courage, hp), rear_(rear), lear_(lear) {}
+Bbee::Bbee(std::string label, int armor, int ammo, int courage, int hp, int rear, int lear)
+    : Transformer(label, armor, ammo, courage, hp), rear_(rear), lear_(lear) {
+}
 
 int Bbee::getRear() {
     return rear_;
@@ -24,4 +26,5 @@ bool Bbee::pikpik() {
     return false;
 }
 
-Bbee::~Bbee() {}
+Bbee::~Bbee() {
+}
