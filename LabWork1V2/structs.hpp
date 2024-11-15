@@ -1,4 +1,6 @@
-// the header of the structs
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork1
+*/
 
 #ifndef STRUCTS
 #define STRUCTS

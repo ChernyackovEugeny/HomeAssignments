@@ -5,7 +5,7 @@ LGTESTFLAGS = -lgtest -lgtest_main -pthread
 
 DEPS = $(wildcard *.hpp)
 
-OBJ = Task.o
+OBJ = Rotatebmp.o
 
 .PHONY: default
 default: all
