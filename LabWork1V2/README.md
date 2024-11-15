@@ -5,7 +5,6 @@
 st128891@student.spbu.ru
 ##Description
 the reading and according bmp file, its rotation and applitacion of the Gaussian filter.
-The name of bmp file must be "example.bmp"
 ## Build
 make
 ## Run
