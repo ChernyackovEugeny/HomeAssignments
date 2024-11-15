@@ -3,24 +3,22 @@
 #include "funcheader.hpp"
 #include "structs.hpp"
 
-int main()
-{
+int main() {
     std::ifstream input;
 
     input.open("example.bmp", std::ios::binary | std::ios::in);
 
-    Fileheader* header = new Fileheader;
-    Bitmapinfo* bitmap = new Bitmapinfo;
+    Fileheader *header = new Fileheader;
+    Bitmapinfo *bitmap = new Bitmapinfo;
 
     init(input, bitmap, header);
 
     int rowSize = (bitmap->biWidth * bitmap->biBitCount / 8 + 3) & ~3;
 
-    uint8_t* biTable = new uint8_t[rowSize*bitmap->biHeight];
+    uint8_t *biTable = new uint8_t[rowSize * bitmap->biHeight];
 
-    for (int i = 0; i < bitmap->biHeight; i++)
-    {
-        input.read(reinterpret_cast<char*>(&biTable[rowSize*i]), rowSize);
+    for (int i = 0; i < bitmap->biHeight; i++) {
+        input.read(reinterpret_cast<char *>(&biTable[rowSize * i]), rowSize);
     }
 
     rotate1(bitmap, header, biTable, rowSize);
@@ -31,5 +29,3 @@ int main()
     delete header;
     delete bitmap;
 }
-
-

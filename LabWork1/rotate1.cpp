@@ -1,14 +1,13 @@
 // the turn of the picture 90 degrees clockwise
 
-#include "funcheader.hpp"
-#include <iostream>
-#include <fstream>
 #include <cstdint>
 #include <cstring>
+#include <fstream>
+#include <iostream>
 
-void rotate1(Bitmapinfo* bitmap, Fileheader* header, uint8_t* biTable, int rowSize)
-{
+#include "funcheader.hpp"
 
+void rotate1(Bitmapinfo *bitmap, Fileheader *header, uint8_t *biTable, int rowSize) {
     std::ofstream rotate1;
     rotate1.open("rotate1.bmp", std::ios::binary | std::ios::out);
 
@@ -26,14 +25,10 @@ void rotate1(Bitmapinfo* bitmap, Fileheader* header, uint8_t* biTable, int rowSi
     bitmap->biSizeImage = rowSize * bitmap->biHeight;
     header->Fsize = sizeof(Fileheader) + sizeof(Bitmapinfo) + bitmap->biSizeImage;
 
-
-    uint8_t* rotated1_data = new uint8_t[bitmap->biHeight * rowSize];
-    for (int i = 0; i < origHeight; i++)
-    {
-        for (int j = 0; j < origWidth; j++)
-        {
-            for (int k = 0; k < (bitmap->biBitCount / 8); k++)
-            {
+    uint8_t *rotated1_data = new uint8_t[bitmap->biHeight * rowSize];
+    for (int i = 0; i < origHeight; i++) {
+        for (int j = 0; j < origWidth; j++) {
+            for (int k = 0; k < (bitmap->biBitCount / 8); k++) {
                 rotated1_data[(j * origHeight + i) * (bitmap->biBitCount / 8) + k] =
                     biTable[(i * origrowSize) + (origWidth - 1 - j) * (bitmap->biBitCount / 8) + k];
             }
@@ -42,9 +37,8 @@ void rotate1(Bitmapinfo* bitmap, Fileheader* header, uint8_t* biTable, int rowSi
 
     write(rotate1, bitmap, header);
 
-    for (int i = 0; i < bitmap->biHeight; i++)
-    {
-        rotate1.write(reinterpret_cast<char*>(&rotated1_data[rowSize*i]), rowSize);
+    for (int i = 0; i < bitmap->biHeight; i++) {
+        rotate1.write(reinterpret_cast<char *>(&rotated1_data[rowSize * i]), rowSize);
     }
 
     bitmap->biWidth = origWidth;

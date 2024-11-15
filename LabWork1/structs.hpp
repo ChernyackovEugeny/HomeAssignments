@@ -8,7 +8,6 @@
 #include <cstdint>
 #include <cstring>
 #include <cmath>
-
 struct Fileheader
 {
     uint16_t Ftype; // file type
@@ -55,5 +54,4 @@ struct Bitmapinfo
     uint32_t bProfileSize;
     uint32_t bReserved; // reserved for 0
 };
-
 #endif
