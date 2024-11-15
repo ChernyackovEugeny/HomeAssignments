@@ -1,9 +1,12 @@
-// the main function
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 2b
+*/
 
 #include <iostream>
-#include "PZAPIS.hpp"
+
+#include "pnotation.hpp"
 
 int main() {
-	pzapis();
-	return 1;
+    pnotation();
+    return 1;
 }
