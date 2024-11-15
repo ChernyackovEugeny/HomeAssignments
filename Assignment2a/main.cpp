@@ -1,9 +1,18 @@
-// the main function
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 2a
+*/
 
 #include <iostream>
-#include "DATAF.hpp"
+#include <string>
 
-int main() {
-    dataf();
+#include "reversedata.hpp"
+
+int main()
+{
+    std::string name;
+    std::cout << "Please, enter the name of your file to be reversed." << std::endl;
+    std::cin >> name;
+
+    reversedata(name);
     return 1;
 }

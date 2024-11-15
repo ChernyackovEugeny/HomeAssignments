@@ -1,14 +1,14 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra
 
-main: main.o dataf.o
-	$(CXX) -o mik main.o dataf.o
+main: main.o reversedata.o
+	$(CXX) -o mik main.o reversedata.o
 
-main.o: main.cpp DATAF.hpp
+main.o: main.cpp reversedata.hpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
-dataf.o: dataf.cpp DATAF.hpp
-	$(CXX) $(CXXFLAGS) -c dataf.cpp
+reversedata.o: reversedata.cpp reversedata.hpp
+	$(CXX) $(CXXFLAGS) -c reversedata.cpp
 	
 clean:
 	rm -f *.o mik
