@@ -1,4 +1,6 @@
-// header of inherited class of Transformer
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 5
+*/
 
 #ifndef BBEE
 #define BBEE

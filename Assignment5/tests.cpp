@@ -1,16 +1,19 @@
-// tests
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 5
+*/
 
 #include <gtest/gtest.h>
+
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include "Transformer.hpp"
+
 #include "Autobots.hpp"
 #include "Bbee.hpp"
 #include "Deceptikon.hpp"
+#include "Transformer.hpp"
 
-TEST(TransformerTest, Transformer)
-{
+TEST(TransformerTest, Transformer) {
     Transformer boop("BumbleBee", 10, 20, 30, 40);
     Gun bush("boom");
     EXPECT_EQ(boop.getHp(), 40);
@@ -21,8 +24,7 @@ TEST(TransformerTest, Transformer)
     EXPECT_EQ(boop.getGun(), "boom");
 }
 
-TEST(AutobotTest, Autobot)
-{
+TEST(AutobotTest, Autobot) {
     Autobots beep("Miki", 10, 20, 30, 40, 91, 92);
     EXPECT_EQ(beep.getLabel(), "Miki");
     EXPECT_EQ(beep.getRarm(), 91);
@@ -30,8 +32,7 @@ TEST(AutobotTest, Autobot)
     EXPECT_EQ(beep.getRarm(), 100);
 }
 
-TEST(DeceptikonTest, Deceptikon)
-{
+TEST(DeceptikonTest, Deceptikon) {
     Deceptikon buck("Pop", 10, 20, 30, 40, 91, 92);
     EXPECT_EQ(buck.getLabel(), "Pop");
     EXPECT_EQ(buck.getRleg(), 91);
@@ -39,8 +40,7 @@ TEST(DeceptikonTest, Deceptikon)
     EXPECT_EQ(buck.getRleg(), 100);
 }
 
-TEST(BbeeTest, Bbee)
-{
+TEST(BbeeTest, Bbee) {
     Bbee be("Bbee", 10, 20, 30, 40, 91, 92);
     EXPECT_EQ(be.getLabel(), "Bbee");
     EXPECT_EQ(be.getRear(), 91);
@@ -48,18 +48,17 @@ TEST(BbeeTest, Bbee)
     EXPECT_EQ(be.getRear(), 100);
 }
 
-TEST(VirtualTest, Vtest)
-{
+TEST(VirtualTest, Vtest) {
     Transformer a;
     Autobots b;
-    Transformer* p = &b;
+    Transformer *p = &b;
     Transformer e, ee, eee;
     Autobots t, tt, ttt;
     Deceptikon y, yy, yyy;
-    std::vector<Transformer*> q = {&e, &ee, &eee, &t, &tt, &ttt, &y, &yy, &yyy};
+    std::vector<Transformer *> q = {&e, &ee, &eee, &t, &tt, &ttt, &y, &yy, &yyy};
 
     std::ostringstream output;
-    std::streambuf* oldcout = std::cout.rdbuf(output.rdbuf());
+    std::streambuf *oldcout = std::cout.rdbuf(output.rdbuf());
 
     a.Optransform();
     EXPECT_EQ(output.str(), "class Transformer -> Optransform\n");
@@ -73,30 +72,22 @@ TEST(VirtualTest, Vtest)
     p->Opfire();
     EXPECT_EQ(output.str(), "class Autobots -> Opfire\n");
 
-    for (int i = 0; i < int(q.size()); i++)
-    {
+    for (int i = 0; i < int(q.size()); i++) {
         output.str("");
         q[i]->Opfire();
-        if (i < 3)
-        {
+        if (i < 3) {
             EXPECT_EQ(output.str(), "class Transformer -> Opfire\n");
-        }
-        else if (i >= 3 && i < 6)
-        {
+        } else if (i >= 3 && i < 6) {
             EXPECT_EQ(output.str(), "class Autobots -> Opfire\n");
-        }
-        else if (i >= 6)
-        {
+        } else if (i >= 6) {
             EXPECT_EQ(output.str(), "class Deceptikon -> Opfire\n");
         }
-
     }
 
     std::cout.rdbuf(oldcout);
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

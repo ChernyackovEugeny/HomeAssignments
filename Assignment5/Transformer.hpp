@@ -1,4 +1,6 @@
-// header of the primary class
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 5
+*/
 
 #ifndef TRANSFORMER
 #define TRANSFORMER

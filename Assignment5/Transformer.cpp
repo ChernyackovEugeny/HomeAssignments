@@ -1,9 +1,10 @@
-// realisation of the primary class
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 5
+*/
 
 #include "Transformer.hpp"
 
-Transformer::Transformer(std::string label, int armor, int ammo, int courage, int hp)
-{
+Transformer::Transformer(std::string label, int armor, int ammo, int courage, int hp) {
     label_ = label;
     armor_ = armor;
     ammo_ = ammo;
@@ -12,85 +13,67 @@ Transformer::Transformer(std::string label, int armor, int ammo, int courage, in
     healthpoints_ = Hp(hp);
 }
 
-Transformer::Transformer() {}
+Transformer::Transformer() {
+}
 
-void Transformer::Optransform()
-{
+void Transformer::Optransform() {
     std::cout << "class Transformer -> Optransform" << std::endl;
 }
-void Transformer::Opfire()
-{
+void Transformer::Opfire() {
     std::cout << "class Transformer -> Opfire" << std::endl;
 }
-void Transformer::Ophide()
-{
+void Transformer::Ophide() {
     std::cout << "class Transformer -> Ophide" << std::endl;
 }
 
-void Transformer::setAmmo(int ammo)
-{
+void Transformer::setAmmo(int ammo) {
     ammo_ = ammo;
 }
-int Transformer::getAmmo()
-{
+int Transformer::getAmmo() {
     return ammo_;
 }
 
-void Transformer::setLabel(std::string label)
-{
+void Transformer::setLabel(std::string label) {
     label_ = label;
 }
-std::string Transformer::getLabel()
-{
+std::string Transformer::getLabel() {
     return label_;
 }
 
-void Transformer::setArmor(int armor)
-{
+void Transformer::setArmor(int armor) {
     armor_ = armor;
 }
-int Transformer::getArmor()
-{
+int Transformer::getArmor() {
     return armor_;
 }
 
-void Transformer::setCourage(int courage)
-{
+void Transformer::setCourage(int courage) {
     courage_ = courage;
 }
-int Transformer::getCourage()
-{
+int Transformer::getCourage() {
     return courage_;
 }
 
-
-void Transformer::setHp(int hp)
-{
+void Transformer::setHp(int hp) {
     healthpoints_.setHp(hp);
 }
-int Transformer::getHp()
-{
+int Transformer::getHp() {
     return healthpoints_.getHp();
 }
 
-
-void Transformer::setGun(Gun* weap)
-{
+void Transformer::setGun(Gun *weap) {
     weapon_ = weap;
 }
-std::string Transformer::getGun()
-{
+std::string Transformer::getGun() {
     return weapon_->getGun();
 }
 
-
-void Transformer::fire()
-{
+void Transformer::fire() {
     return;
 }
-bool Transformer::move()
-{
+bool Transformer::move() {
     return true;
 }
 
-Transformer::~Transformer() {}
+Transformer::~Transformer() {
+}

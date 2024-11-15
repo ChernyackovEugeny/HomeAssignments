@@ -1,3 +1,6 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 5
+*/
 // header of inherited class of Transformer
 
 #ifndef DECEPTIKON

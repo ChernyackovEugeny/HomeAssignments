@@ -1,14 +1,16 @@
-// realisation of the main function
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+home assignment 5
+*/
 
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Transformer.hpp"
-#include "Deceptikon.hpp"
+
 #include "Autobots.hpp"
 #include "Bbee.hpp"
+#include "Deceptikon.hpp"
+#include "Transformer.hpp"
 
-int main()
-{
+int main() {
     return 1;
 }
