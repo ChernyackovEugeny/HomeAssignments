@@ -8,16 +8,19 @@ class Door {
     
     public:
         Door();
+        
+        bool get_light_status();
+        bool get_close_status();
+        
         ~Door();
         
     protected:
-        bool get_rdoor_close();
-        bool get_ldoor_close();
-        
-        bool ldoor_close_;
-        bool ldoor_light_;
-        bool rdoor_close_;
-        bool rdoor_light_;
+    	void set_light_status(bool status);
+        void set_close_status(bool status);
+    
+        bool door_close_;
+        bool door_light_;
+
 
 };
 

@@ -9,6 +9,8 @@ class Player {
     public:
         Player();
         
+        bool get
+        
         ~Player();
         
     protected:        
@@ -24,7 +26,6 @@ class Player {
         double cams_up_time_;
         bool cams_status_;
         bool fan_status_;
-        double energy_;
 };
 
 #endif

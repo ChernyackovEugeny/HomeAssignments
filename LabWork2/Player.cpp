@@ -1,11 +1,7 @@
 #include "Player.hpp"
 
 Player::Player() : cams_status_(false), fan_status_(true) {}
-/*
-double Player::get_enegy() {
-    return energy_;
-}
-*/
+
 std::string Player::push_nose() {
     return "beep-beep";
 }

@@ -1,13 +1,21 @@
 #include "Door.hpp"
 
-Door::Door() : ldoor_close_(false), ldoor_light_(false), rdoor_close_(false), rdoor_light_(false) {}
+Door::Door() : door_close_(false), door_light_(false) {}
 
-bool Door::get_rdoor_close() {
-    return rdoor_close_;
+bool Door::get_light_status() {
+    return door_light_;
 }
 
-bool Door::get_ldoor_close() {
-    return ldoor_close_;
+bool Door::get_close_status() {
+    return door_close_;
+}
+
+void Door::set_light_status(bool status) {
+    door_light_ = status;
+}
+
+void Door::set_close_status(bool status) {
+    door_close_ = status;
 }
 
 Door::~Door() {}
