@@ -1,7 +1,7 @@
 #include "Energy.hpp"
 #include <chrono>
 
-Energy::Energy() : cur_energy_(100), energy_psecond_(0.25), energy_mult_(1) {}
+Energy::Energy() : cur_energy_(100), energy_psecond_(0.1), energy_mult_(1) {}
 
 void Energy::set_energy(double energy) {
     cur_energy_ = energy;

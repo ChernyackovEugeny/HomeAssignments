@@ -13,6 +13,7 @@
 #include "Energy.hpp"
 #include "Random.hpp"
 #include "Animatronic.hpp"
+#include "Fox.hpp"
 
 class Game {
 
@@ -50,8 +51,11 @@ class Game {
 	    
 	    Random gen_rand_;
 	    
+	    // похожие аниматроники
 	    Animatronic Bonnie;
 	    Animatronic Chica;
+	    // непохожие аниматроники
+	    Fox Foxy;
 	    
 	    std::chrono::steady_clock::time_point start_time_;
 	    std::chrono::steady_clock::time_point cur_time_;

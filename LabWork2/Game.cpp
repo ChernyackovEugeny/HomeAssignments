@@ -42,6 +42,7 @@ void Game::game() {
         // anims actions
         Bonnie.move_anim(gen_rand_, ldoor_.door_close_);
         Chica.move_anim(gen_rand_, rdoor_.door_close_);
+        Foxy.move_anim(gen_rand_, ldoor_.door_close_);
         
         // проверка на скример
         if (Bonnie.scream_) {
@@ -50,6 +51,10 @@ void Game::game() {
         }
         if (Chica.scream_) {
             std::cout << "Chica is screaming, you lost" << std::endl;
+            break;
+        }
+        if (Foxy.scream_) {
+            std::cout << "Foxy is screaming, you lost" << std::endl;
             break;
         }
         
@@ -198,6 +203,25 @@ bool Game::look_cams() {
                 if (cam_names_[i] == Chica.way_[Chica.place_-1]) {
                     std::cout << "Chica is here!" << std::endl;
                 }
+                if (cam_names_[i] == "1C") {
+                    if (Foxy.stage_ == 1) {
+                        std::cout << "Foxy is behind the curtain" << std::endl;
+                    }
+                    else if (Foxy.stage_ == 2) {
+                        std::cout << "You can see the Foxy's head" << std::endl;
+                    }
+                    else if (Foxy.stage_ == 3) {
+                        std::cout << "Foxy is near the scene" << std::endl;
+                    }
+                    else if (Foxy.stage_ == 4) {
+                        std::cout << "FOXY IS OUT!" << std::endl;
+                    }
+                }
+                
+                if (cam_names_[i] == "2A" and Foxy.place_ == 2) {
+                    std::cout << "FOXY IS RUNNING!" << std::endl;
+                }
+
                 // сидим на этой камере cams_[i], нужна проверка на аниматроников
                 
                 
@@ -210,6 +234,11 @@ bool Game::look_cams() {
                 Chica.move_anim(gen_rand_, rdoor_.door_close_);
                 if (Chica.scream_) {
                     std::cout << "Chica is screaming, you lost" << std::endl;
+                    return true;
+                }
+                Foxy.move_anim(gen_rand_, rdoor_.door_close_);
+                if (Foxy.scream_) {
+                    std::cout << "Foxy is screaming, you lost" << std::endl;
                     return true;
                 }
                 
@@ -226,8 +255,7 @@ bool Game::look_cams() {
                     return true;
                 cur_time_ = std::chrono::steady_clock::now();
                 }
-                
-                
+
                 found = true;
                 break;
             }   
@@ -246,6 +274,8 @@ void Game::create_anims() {
     
     Chica.way_ = {"1A", "1B", "7", "6", "4A", "4B"};
     Chica.last_move_time_ = std::chrono::steady_clock::now();
+    
+    Foxy.last_move_time_ = std::chrono::steady_clock::now();
 }
 
 

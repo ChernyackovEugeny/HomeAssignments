@@ -16,7 +16,7 @@ class Animatronic {
         ~Animatronic();
 
     protected:
-        void move_anim(Random& gen_rand_, bool left_door);
+        void move_anim(Random& gen_rand_, bool door);
     
         std::vector<std::string> way_;
         bool scream_;

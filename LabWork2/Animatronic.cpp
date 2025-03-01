@@ -6,7 +6,7 @@
 
 Animatronic::Animatronic() : place_(1), scream_(false), time_before_scream_(9), near_door_time_(10), stand_time_(0) {}
 
-void Animatronic::move_anim(Random& gen_rand_, bool left_door) {
+void Animatronic::move_anim(Random& gen_rand_, bool door) {
     auto cur_time = std::chrono::steady_clock::now();
     if (stand_time_ == 0) {
         stand_time_ = gen_rand_.get_rand(7, 11);
@@ -14,12 +14,12 @@ void Animatronic::move_anim(Random& gen_rand_, bool left_door) {
     // если аниматроник у двери
     if (place_ == way_.size()+1 and std::chrono::duration_cast<std::chrono::seconds>(cur_time - last_move_time_).count() < near_door_time_) {
         // если дверь закрыта, обновить таймер скримера
-        if (left_door) {
+        if (door) {
             auto near_opened_door = std::chrono::steady_clock::now();
         }
         
         // если таймер скримера дотикал
-        if (not left_door and std::chrono::duration_cast<std::chrono::seconds>(cur_time - near_opened_door_).count() >= time_before_scream_) {
+        if (not door and std::chrono::duration_cast<std::chrono::seconds>(cur_time - near_opened_door_).count() >= time_before_scream_) {
             // screamer
             scream_ = true;
         }
