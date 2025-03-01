@@ -13,8 +13,6 @@ class Player {
         
     protected:        
         std::string push_nose();
-        std::string get_fan();
-        void set_fan(bool status);
 /*
         void cams(bool cams_status);
         double get_energy();

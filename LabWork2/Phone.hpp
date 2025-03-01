@@ -10,18 +10,12 @@ class Phone {
     public:
         Phone();
         
-        bool get_phone_status();
-        void set_phone_status(bool status);
-        
-        std::string introduction();
+        void introduction();
         
         ~Phone();
     
     protected:
         bool phone_status_;
-
-
-
 };
 
 

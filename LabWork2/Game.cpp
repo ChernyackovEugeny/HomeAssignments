@@ -10,13 +10,13 @@ Game::Game() {
 }
 
 void Game::start_game() {
+    // инструкция
+    phone_.introduction();
+    
     create_cams();
     create_anims();
     start_time_ = std::chrono::steady_clock::now();
-/*
-	run_time(time_mult_);
-	create_anims();
-*/
+    
 	game();
 }
 
@@ -58,7 +58,7 @@ void Game::game() {
         cur_time_ = std::chrono::steady_clock::now();
         
         // обновляем множитель эергии
-        energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ + rdoor_.door_light_ + player_.cams_status_;
+        energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ + rdoor_.door_light_ + player_.cams_status_ + 1;
         
         
         // payers action
@@ -131,11 +131,29 @@ void Game::game() {
             rdoor_.door_close_ = false;
         }
         
-        // *unnessesary actions*
+        // info about light, doors, energy, energy consumption
+        if (entered == "info") {
+            std::cout << "Energy: " << energy_.cur_energy_ << "; Energy consumtion: " << energy_.energy_mult_ << "/6; Left light: " << ldoor_.door_light_ << "; Left close: " << ldoor_.door_close_ << "; Right light: " << rdoor_.door_light_ << "; Right close: " << rdoor_.door_close_ << std::endl;
+        }
+        
+        // push a nose
+        if (entered == "push a nose") {
+            std::cout << player_.push_nose() << std::endl;
+        }
+        
+        // fan
+        if (entered == "fan on") {
+            std::cout << "The fan is on" << std::endl;
+            player_.fan_status_ == true;
+        }
+        if (entered == "fan off") {
+            std::cout << "The fan is off" << std::endl;
+            player_.fan_status_ == false;
+        }        
         
         // проверка на победу
         auto current_time = std::chrono::steady_clock::now();
-        if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >= 4) {
+        if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >= 3) {
             std::cout << "You won!" << std::endl;
             break;
         }
@@ -195,13 +213,27 @@ bool Game::look_cams() {
                     return true;
                 }
                 
+                // изменяем энергию
+                energy_.change_energy(cur_time_);
+                
+                // проверка на наличие энергии
+                if (energy_.cur_energy_ <= 0) {
+                    if (energy_lost()) {
+                        std::cout << "You lost" << std::endl;
+                        return true;
+                    }
+                    std::cout << "You win!" << std::endl;
+                    return true;
+                cur_time_ = std::chrono::steady_clock::now();
+                }
+                
                 
                 found = true;
                 break;
             }   
         }
         if (not found and (entered_cam != "coff" or entered_cam != "cams off")) {
-            std::cout << "The cam with that name is not exist" << std::endl;
+            std::cout << "The cam with that name is not exist, to escape the cams mode input 'cams off' or 'coff'" << std::endl;
         }
         std::getline(std::cin, entered_cam);
     }
@@ -220,10 +252,7 @@ void Game::create_anims() {
 void Game::create_cams() {
     for (int i = 0; i < 11; i++) {
         cams_[i] = Cam(cam_names_[i]);
-        
-        std::cout << cams_[i].get_name() << std::endl;
     }
-    std::cout << phone_.introduction() << std::endl;
 }
 
 
