@@ -10,6 +10,7 @@ class Cam {
     public:
         Cam(std::string name);
         Cam();
+        
         ~Cam();
     protected:
     	std::string get_name();

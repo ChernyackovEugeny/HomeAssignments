@@ -12,6 +12,7 @@
 #include "Phone.hpp"
 #include "Energy.hpp"
 #include "Random.hpp"
+#include "Animatronic.hpp"
 
 class Game {
 
@@ -20,24 +21,21 @@ class Game {
     friend class Phone;
     friend class Energy;
     friend class Random;
+    friend class Animatronic;
     
 	public:
-	    Game(int time_mult);
+	    Game();
 	    void start_game();
         ~Game();	
 	private:
 	    void create_cams();
-	    void create_player();
-/*
-	    void create_doors();
 	    void create_anims();
-*/
+
 	    void game();
 	    bool energy_lost();
+	    bool look_cams();
 	    
 	protected:
-	    int time_mult_;
-	    
 	    std::array<std::string, 11> cam_names_; // создание камер
 	    std::array<Cam, 11> cams_;
 	    
@@ -51,6 +49,9 @@ class Game {
 	    Energy energy_;
 	    
 	    Random gen_rand_;
+	    
+	    Animatronic Bonnie;
+	    Animatronic Chica;
 	    
 	    std::chrono::steady_clock::time_point start_time_;
 	    std::chrono::steady_clock::time_point cur_time_;

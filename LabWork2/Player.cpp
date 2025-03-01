@@ -10,8 +10,5 @@ std::string Player::get_fan() {
         return "fan on";
     } return "fan off";
 }
-void Player::set_fan(bool status) {
-    fan_status_ = status;
-}
 
 Player::~Player() {}

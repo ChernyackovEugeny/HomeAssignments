@@ -4,9 +4,11 @@
 #include <random>
 
 class Game;
+class Animatronic;
 
 class Random {
     friend class Game;
+    friend class Animatronic;
     
     public:
         Random();

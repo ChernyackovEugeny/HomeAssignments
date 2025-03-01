@@ -4,7 +4,7 @@
 #include "Cam.hpp"
 
 int main() {
-    Game a(1);
+    Game a;
     a.start_game();
     return 0;
 }

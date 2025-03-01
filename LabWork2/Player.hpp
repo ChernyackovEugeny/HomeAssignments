@@ -9,8 +9,6 @@ class Player {
     public:
         Player();
         
-        bool get
-        
         ~Player();
         
     protected:        
