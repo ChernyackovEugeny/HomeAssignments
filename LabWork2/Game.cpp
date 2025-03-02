@@ -7,6 +7,7 @@
 
 Game::Game() {
     cam_names_ = {"1A", "1B", "5", "7", "1C", "3", "6", "2A", "2B", "4A", "4B"};
+    time_ = 0;
 }
 
 void Game::start_game() {
@@ -40,10 +41,10 @@ void Game::game() {
         }
         
         // anims actions
-        Bonnie.move_anim(gen_rand_, ldoor_.door_close_);
-        Chica.move_anim(gen_rand_, rdoor_.door_close_);
-        Foxy.move_anim(gen_rand_, ldoor_.door_close_);
-        Freddy.move_anim(gen_rand_, rdoor_.door_close_, false); // false тк двигаем не из камер
+        Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
+        Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
+        Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
+        Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_); // false тк двигаем не из камер
         
         // проверка на скример
         if (Bonnie.scream_) {
@@ -65,6 +66,7 @@ void Game::game() {
         
         // обновляем текущее время
         cur_time_ = std::chrono::steady_clock::now();
+        time_ = std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count();
         
         // обновляем множитель эергии
         energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ + rdoor_.door_light_ + player_.cams_status_ + 1;
@@ -73,17 +75,8 @@ void Game::game() {
         // payers action
         
         // cams check
-        if (entered == "cams off" or entered == "coff") {
-            energy_.energy_mult_ -= 1;
-            player_.cams_status_ = false;
-        }
-        
         if (entered == "cams on" or entered == "con") {
-            energy_.energy_mult_ += 1;
             player_.cams_status_ = true;
-        }
-        
-        if (player_.cams_status_) {
             // если убили в камерах, закончить цикл и тут
             if (look_cams()) {
                 break;
@@ -91,9 +84,7 @@ void Game::game() {
             player_.cams_status_ = false;
         }
         
-        
         //doors light
-        
         if (entered == "light left door" or entered == "lld") {
         
             if (Bonnie.place_ == 7) {
@@ -146,7 +137,7 @@ void Game::game() {
         
         // info about light, doors, energy, energy consumption
         if (entered == "info") {
-            std::cout << "Energy: " << energy_.cur_energy_ << "; Energy consumtion: " << energy_.energy_mult_ << "/6; Left light: " << ldoor_.door_light_ << "; Left close: " << ldoor_.door_close_ << "; Right light: " << rdoor_.door_light_ << "; Right close: " << rdoor_.door_close_ << std::endl;
+            std::cout << "Energy: " << energy_.cur_energy_ << "; Energy consumtion: " << energy_.energy_mult_ << "/6; Time: " << time_ << " am; Left light: " << ldoor_.door_light_ << "; Left close: " << ldoor_.door_close_ << "; Right light: " << rdoor_.door_light_ << "; Right close: " << rdoor_.door_close_ << std::endl;
         }
         
         // push a nose
@@ -166,7 +157,7 @@ void Game::game() {
         
         // проверка на победу
         auto current_time = std::chrono::steady_clock::now();
-        if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >= 3) {
+        if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >= 6) {
             std::cout << "You won!" << std::endl;
             break;
         }
@@ -183,7 +174,7 @@ bool Game::energy_lost() {
     for (int i = 0; i < seconds_left; i++) {
         std::cout << "Your energy is empty, doors are opened, light is off, Freddy is looking at you" << std::endl;
         
-        if (std::chrono::duration_cast<std::chrono::minutes>(current_time - start_time_).count() >= 3) {
+        if (std::chrono::duration_cast<std::chrono::minutes>(current_time - start_time_).count() >= 6) {
             return false;
         }
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -199,6 +190,7 @@ bool Game::look_cams() {
     
     std::string entered_cam;
     std::getline(std::cin, entered_cam);
+    cur_time_ = std::chrono::steady_clock::now();
     
     while (entered_cam != "cams off" and entered_cam != "coff") {
         bool found = false;
@@ -233,15 +225,15 @@ bool Game::look_cams() {
                 // двигаем Фредди тут, а не ниже, зависим от просмотра камеры
                 if (cam_names_[i] == Freddy.way_[Freddy.place_-1] and cam_names_[i] != "4B") {
                     std::cout << "Freddy is here!" << std::endl;
-                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false);
+                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_);
                 }
                 else if (cam_names_[i] == Freddy.way_[Freddy.place_-1] and cam_names_[i] == "4B") {
                     std::cout << "Freddy is here!" << std::endl;
-                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, true);
+                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, true, time_);
                 }
                 else if (cam_names_[i] != Freddy.way_[Freddy.place_-1]) {
                     // заскримерить может только тут
-                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false);
+                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_);
                     if (Freddy.scream_) {
                         std::cout << "Freddy is screaming, you lost" << std::endl;
                         return true;
@@ -249,36 +241,21 @@ bool Game::look_cams() {
                 }           
                 
                 // двигаем аниматроников, проверка на скример
-                Bonnie.move_anim(gen_rand_, ldoor_.door_close_);
+                Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
                 if (Bonnie.scream_) {
                     std::cout << "Bonnie is screaming, you lost" << std::endl;
                     return true;
                 }
-                Chica.move_anim(gen_rand_, rdoor_.door_close_);
+                Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
                 if (Chica.scream_) {
                     std::cout << "Chica is screaming, you lost" << std::endl;
                     return true;
                 }
-                Foxy.move_anim(gen_rand_, rdoor_.door_close_);
+                Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
                 if (Foxy.scream_) {
                     std::cout << "Foxy is screaming, you lost" << std::endl;
                     return true;
                 }
-                
-                // изменяем энергию
-                energy_.change_energy(cur_time_);
-                
-                // проверка на наличие энергии
-                if (energy_.cur_energy_ <= 0) {
-                    if (energy_lost()) {
-                        std::cout << "You lost" << std::endl;
-                        return true;
-                    }
-                    std::cout << "You win!" << std::endl;
-                    return true;
-                cur_time_ = std::chrono::steady_clock::now();
-                }
-
                 found = true;
                 break;
             }   
@@ -286,6 +263,24 @@ bool Game::look_cams() {
         if (not found and (entered_cam != "coff" or entered_cam != "cams off")) {
             std::cout << "The cam with that name is not exist, to escape the cams mode input 'cams off' or 'coff'" << std::endl;
         }
+        
+        // изменяем энергию
+        energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ + rdoor_.door_light_ + player_.cams_status_ + 1;
+        energy_.change_energy(cur_time_);
+        
+        // проверка на наличие энергии
+        if (energy_.cur_energy_ <= 0) {
+            if (energy_lost()) {
+                std::cout << "You lost" << std::endl;
+                return true;
+            }
+            std::cout << "You win!" << std::endl;
+            return true;
+        }
+        
+        cur_time_ = std::chrono::steady_clock::now();
+        time_ = std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count();
+        
         std::getline(std::cin, entered_cam);
     }
     return false;
@@ -294,15 +289,18 @@ bool Game::look_cams() {
 void Game::create_anims() {
     Bonnie.way_ = {"1A", "1B", "5", "3", "2A", "2B"};
     Bonnie.last_move_time_ = std::chrono::steady_clock::now();
+    Bonnie.intellegence_ = {1, 1, 1, 2, 2, 3};
     
     Chica.way_ = {"1A", "1B", "7", "6", "4A", "4B"};
     Chica.last_move_time_ = std::chrono::steady_clock::now();
+    Chica.intellegence_ = {1, 1, 1, 1, 2, 2};
     
     Foxy.last_move_time_ = std::chrono::steady_clock::now();
+    Foxy.intellegence_ = {0, 1, 2, 3, 3, 4};
     
     Freddy.last_move_time_ = std::chrono::steady_clock::now();
+    Freddy.intellegence_ = {0, 0, 0, 1, 3, 4};
 }
-
 
 void Game::create_cams() {
     for (int i = 0; i < 11; i++) {

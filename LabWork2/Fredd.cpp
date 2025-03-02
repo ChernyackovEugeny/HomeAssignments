@@ -5,10 +5,18 @@
 
 Fredd::Fredd() : way_({"1A", "1B", "7", "6", "4A", "4B"}), place_(1), scream_(false), stand_time_(0), _4b_time_(30), time_before_scream_(10) {}
 
-void Fredd::move_anim(Random& gen_rand_, bool door, bool _4b) {
+void Fredd::move_anim(Random& gen_rand_, bool door, bool _4b, int time) {
     auto cur_time = std::chrono::steady_clock::now();
+    
+    //вычисляем скорость аниматроников по их интеллекту, при нуле аниматроник выключен
+    if (intellegence_[time] == 0) {
+    	return;
+    }
+    int min_time = 30 - intellegence_[time];
+    int max_time = 40 - 2*intellegence_[time];
+    
     if (stand_time_ == 0) {
-        stand_time_ = gen_rand_.get_rand(15, 30);
+        stand_time_ = gen_rand_.get_rand(min_time, max_time);
     }
     // если увидели его на 4b обновляем last_move_time_, может стоять на 4b хоть до бесконечности
     if (place_ == 6 and _4b == true) {
@@ -25,6 +33,7 @@ void Fredd::move_anim(Random& gen_rand_, bool door, bool _4b) {
         else if (std::chrono::duration_cast<std::chrono::seconds>(cur_time - last_move_time_).count() >= time_before_scream_ and door) {
             place_ = gen_rand_.get_rand(3, 4);
             last_move_time_ = std::chrono::steady_clock::now();
+            stand_time_ = gen_rand_.get_rand(min_time, max_time);
         }
     }
     
@@ -32,6 +41,7 @@ void Fredd::move_anim(Random& gen_rand_, bool door, bool _4b) {
     else if (place_ == 6 and std::chrono::duration_cast<std::chrono::seconds>(cur_time - last_move_time_).count() >= _4b_time_) {
         place_ = gen_rand_.get_rand(3, 4);
         last_move_time_ = std::chrono::steady_clock::now();
+        stand_time_ = gen_rand_.get_rand(min_time, max_time);
     }
     
     // передвижение до двери
@@ -39,7 +49,7 @@ void Fredd::move_anim(Random& gen_rand_, bool door, bool _4b) {
         if (place_ < 6) {
             place_ += 1; // передвижение на такое кол-во единиц
             last_move_time_ = std::chrono::steady_clock::now();
-            stand_time_ = gen_rand_.get_rand(15, 30);
+            stand_time_ = gen_rand_.get_rand(min_time, max_time);
         }
         // если стоит на 4B
         else if (place_ == 6) {

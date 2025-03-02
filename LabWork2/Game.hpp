@@ -38,6 +38,8 @@ class Game {
 	    bool look_cams();
 	    
 	protected:
+	    int time_;
+	
 	    std::array<std::string, 11> cam_names_; // создание камер
 	    std::array<Cam, 11> cams_;
 	    

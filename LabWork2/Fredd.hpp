@@ -14,8 +14,9 @@ class Fredd {
         Fredd();
         ~Fredd();
     protected:
-        void move_anim(Random& gen_rand_, bool door, bool _4b);
+        void move_anim(Random& gen_rand_, bool door, bool _4b, int time);
         
+        std::array<int, 6> intellegence_;
         std::array<std::string, 6> way_;
         bool scream_;
         int place_;

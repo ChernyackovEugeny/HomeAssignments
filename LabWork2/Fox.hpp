@@ -15,8 +15,9 @@ class Fox {
         ~Fox();
     
     protected:
-        void move_anim(Random& gen_rand_, bool left_door);
-    
+        void move_anim(Random& gen_rand_, bool left_door, int time);
+        
+        std::array<int, 6> intellegence_;
         std::array<std::string, 2> way_;
         int place_; 
         int stage_; // from 1 to 5 
