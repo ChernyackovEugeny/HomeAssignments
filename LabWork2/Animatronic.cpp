@@ -1,6 +1,5 @@
 #include <vector>
 #include <string>
-#include <iostream>
 #include <chrono>
 #include "Animatronic.hpp"
 

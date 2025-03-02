@@ -2,7 +2,6 @@
 #define GAME
 
 #include <chrono>
-
 #include <array>
 #include <string>
 
@@ -14,6 +13,7 @@
 #include "Random.hpp"
 #include "Animatronic.hpp"
 #include "Fox.hpp"
+#include "Fredd.hpp"
 
 class Game {
 
@@ -23,11 +23,12 @@ class Game {
     friend class Energy;
     friend class Random;
     friend class Animatronic;
+    friend class Fredd;
     
 	public:
 	    Game();
 	    void start_game();
-        ~Game();	
+            ~Game();	
 	private:
 	    void create_cams();
 	    void create_anims();
@@ -56,6 +57,7 @@ class Game {
 	    Animatronic Chica;
 	    // непохожие аниматроники
 	    Fox Foxy;
+	    Fredd Freddy;
 	    
 	    std::chrono::steady_clock::time_point start_time_;
 	    std::chrono::steady_clock::time_point cur_time_;

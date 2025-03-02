@@ -17,7 +17,7 @@ void Game::start_game() {
     create_anims();
     start_time_ = std::chrono::steady_clock::now();
     
-	game();
+    game();
 }
 
 void Game::game() {
@@ -43,6 +43,7 @@ void Game::game() {
         Bonnie.move_anim(gen_rand_, ldoor_.door_close_);
         Chica.move_anim(gen_rand_, rdoor_.door_close_);
         Foxy.move_anim(gen_rand_, ldoor_.door_close_);
+        Freddy.move_anim(gen_rand_, rdoor_.door_close_, false); // false тк двигаем не из камер
         
         // проверка на скример
         if (Bonnie.scream_) {
@@ -57,7 +58,10 @@ void Game::game() {
             std::cout << "Foxy is screaming, you lost" << std::endl;
             break;
         }
-        
+        if (Freddy.scream_) {
+            std::cout << "Freddy is screaming, you lost" << std::endl;
+            break;
+        }
         
         // обновляем текущее время
         cur_time_ = std::chrono::steady_clock::now();
@@ -95,7 +99,9 @@ void Game::game() {
             if (Bonnie.place_ == 7) {
                 std::cout << "Bonnie is looking at you!" << std::endl;
             }
-            // anims check, messege about entities
+            else {
+                std::cout << "There is noone here" << std::endl;
+            }
             ldoor_.door_light_ = true;
         }
         if (entered == "unlight left door" or entered == "unlld") {
@@ -107,7 +113,9 @@ void Game::game() {
             if (Chica.place_ == 7) {
                 std::cout << "Chica is looking at you!" << std::endl;
             }
-            // anims check, messege about entities
+            else {
+                std::cout << "There is noone here" << std::endl;
+            }
             
             rdoor_.door_light_ = true;
         }
@@ -203,6 +211,7 @@ bool Game::look_cams() {
                 if (cam_names_[i] == Chica.way_[Chica.place_-1]) {
                     std::cout << "Chica is here!" << std::endl;
                 }
+                
                 if (cam_names_[i] == "1C") {
                     if (Foxy.stage_ == 1) {
                         std::cout << "Foxy is behind the curtain" << std::endl;
@@ -217,13 +226,27 @@ bool Game::look_cams() {
                         std::cout << "FOXY IS OUT!" << std::endl;
                     }
                 }
-                
                 if (cam_names_[i] == "2A" and Foxy.place_ == 2) {
                     std::cout << "FOXY IS RUNNING!" << std::endl;
                 }
-
-                // сидим на этой камере cams_[i], нужна проверка на аниматроников
                 
+                // двигаем Фредди тут, а не ниже, зависим от просмотра камеры
+                if (cam_names_[i] == Freddy.way_[Freddy.place_-1] and cam_names_[i] != "4B") {
+                    std::cout << "Freddy is here!" << std::endl;
+                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false);
+                }
+                else if (cam_names_[i] == Freddy.way_[Freddy.place_-1] and cam_names_[i] == "4B") {
+                    std::cout << "Freddy is here!" << std::endl;
+                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, true);
+                }
+                else if (cam_names_[i] != Freddy.way_[Freddy.place_-1]) {
+                    // заскримерить может только тут
+                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false);
+                    if (Freddy.scream_) {
+                        std::cout << "Freddy is screaming, you lost" << std::endl;
+                        return true;
+                    }
+                }           
                 
                 // двигаем аниматроников, проверка на скример
                 Bonnie.move_anim(gen_rand_, ldoor_.door_close_);
@@ -276,6 +299,8 @@ void Game::create_anims() {
     Chica.last_move_time_ = std::chrono::steady_clock::now();
     
     Foxy.last_move_time_ = std::chrono::steady_clock::now();
+    
+    Freddy.last_move_time_ = std::chrono::steady_clock::now();
 }
 
 
