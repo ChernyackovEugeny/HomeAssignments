@@ -13,13 +13,7 @@ class Player {
         
     protected:        
         std::string push_nose();
-/*
-        void cams(bool cams_status);
-        double get_energy();
-        
-        std::string get_info();
-*/
-        double cams_up_time_;
+
         bool cams_status_;
         bool fan_status_;
 };

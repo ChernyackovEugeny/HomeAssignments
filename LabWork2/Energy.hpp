@@ -10,14 +10,10 @@ class Energy {
     
     public:
         Energy();
-        
-        double get_energy();
-        
         ~Energy();
     
     protected:
         void change_energy(std::chrono::steady_clock::time_point last_time);
-        void set_energy(double energy);
         
         double cur_energy_;
         double energy_psecond_;

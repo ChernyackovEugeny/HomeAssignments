@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-Phone::Phone() : phone_status_(false) {}
+Phone::Phone() {}
 
 void Phone::introduction() {
     std::cout << "Hello there, check out the conrols:" << std::endl;

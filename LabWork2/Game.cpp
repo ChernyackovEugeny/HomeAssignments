@@ -148,15 +148,14 @@ void Game::game() {
         // fan
         if (entered == "fan on") {
             std::cout << "The fan is on" << std::endl;
-            player_.fan_status_ == true;
+            player_.fan_status_ = true;
         }
         if (entered == "fan off") {
             std::cout << "The fan is off" << std::endl;
-            player_.fan_status_ == false;
+            player_.fan_status_ = false;
         }        
         
         // проверка на победу
-        auto current_time = std::chrono::steady_clock::now();
         if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >= 6) {
             std::cout << "You won!" << std::endl;
             break;

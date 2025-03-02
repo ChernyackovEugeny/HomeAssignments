@@ -12,13 +12,8 @@ class Cam {
         Cam();
         
         ~Cam();
-    protected:
-    	std::string get_name();
-    	
-        void watch_cam();
-        void get_entities_here();
-        
-//        std::string picture;
+    protected:   
+//      std::string picture;
         std::string name_;
 };
 

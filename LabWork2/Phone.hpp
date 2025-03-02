@@ -9,17 +9,10 @@ class Phone {
     
     public:
         Phone();
-        
-        void introduction();
-        
         ~Phone();
     
     protected:
-        bool phone_status_;
+        void introduction();
 };
-
-
-
-
 
 #endif
