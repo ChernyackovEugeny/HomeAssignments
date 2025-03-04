@@ -4,7 +4,7 @@
 #include <array>
 #include "Animatronic.hpp"
 
-Animatronic::Animatronic() : scream_(false), place_(1), time_before_scream_(9), near_door_time_(10), stand_time_(0) {}
+Animatronic::Animatronic() : scream_(false), place_(1), time_before_scream_(9), near_door_time_(12), stand_time_(0) {}
 
 void Animatronic::move_anim(Random& gen_rand_, bool door, int time) {
     auto cur_time = std::chrono::steady_clock::now();
@@ -35,7 +35,7 @@ void Animatronic::move_anim(Random& gen_rand_, bool door, int time) {
     
     // если не заскримерил, оттащить аниматроника назад
     else if (place_ == int(way_.size()+1) and std::chrono::duration_cast<std::chrono::seconds>(cur_time - last_move_time_).count() >= near_door_time_) {
-        place_ = gen_rand_.get_rand(1, way_.size()-1);
+        place_ = gen_rand_.get_rand(2, way_.size()-1);
         last_move_time_ = std::chrono::steady_clock::now();
         near_door_time_ = gen_rand_.get_rand(5, 20);
         time_before_scream_ = gen_rand_.get_rand(7, 11);

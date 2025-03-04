@@ -1,7 +1,7 @@
 #include "Energy.hpp"
 #include <chrono>
 
-Energy::Energy() : cur_energy_(100), energy_psecond_(0.1), energy_mult_(1) {}
+Energy::Energy() : cur_energy_(100), energy_psecond_(0.08), energy_mult_(1) {}
 
 void Energy::change_energy(std::chrono::steady_clock::time_point last_time) {
     // имеем предыдущее cur_time и energy_psecond

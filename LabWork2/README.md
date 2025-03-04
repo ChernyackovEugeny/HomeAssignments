@@ -4,7 +4,7 @@
 ## Contacts
 st128891@student.spbu.ru
 ##Description
-the reading and according bmp file, its rotation and applitacion of the Gaussian filter.
+Game "Five Nights at Freddy" c++
 ## Build
 make
 ## Run

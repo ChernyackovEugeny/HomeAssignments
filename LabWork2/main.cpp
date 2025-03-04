@@ -2,9 +2,10 @@
 #include "Game.hpp"
 #include "Player.hpp"
 #include "Cam.hpp"
+#include "Menu.hpp"
 
 int main() {
-    Game a;
-    a.start_game();
+    Menu a;
+    a.menu();
     return 0;
 }

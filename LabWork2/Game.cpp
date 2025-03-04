@@ -5,7 +5,7 @@
 #include "Game.hpp"
 #include "Cam.hpp"
 
-Game::Game() {
+Game::Game(int num_night, bool show_pict) : num_night_(num_night), show_pict_(show_pict) {
     cam_names_ = {"1A", "1B", "5", "7", "1C", "3", "6", "2A", "2B", "4A", "4B"};
     time_ = 0;
 }
@@ -48,19 +48,39 @@ void Game::game() {
         
         // проверка на скример
         if (Bonnie.scream_) {
-            std::cout << "Bonnie is screaming, you lost" << std::endl;
+            if (show_pict_) {
+                picture_.show_scream(1);
+            }
+            else {
+                picture_.show_text_scream(1);
+            }
             break;
         }
         if (Chica.scream_) {
-            std::cout << "Chica is screaming, you lost" << std::endl;
+            if (show_pict_) {
+                picture_.show_scream(2);
+            }
+            else {
+                picture_.show_text_scream(2);
+            }
             break;
         }
         if (Foxy.scream_) {
-            std::cout << "Foxy is screaming, you lost" << std::endl;
+            if (show_pict_) {
+                picture_.show_scream(3);
+            }
+            else {
+                picture_.show_text_scream(3);
+            }
             break;
         }
         if (Freddy.scream_) {
-            std::cout << "Freddy is screaming, you lost" << std::endl;
+            if (show_pict_) {
+                picture_.show_scream(4);
+            }
+            else {
+                picture_.show_text_scream(4);
+            }
             break;
         }
         
@@ -153,7 +173,7 @@ void Game::game() {
         if (entered == "fan off") {
             std::cout << "The fan is off" << std::endl;
             player_.fan_status_ = false;
-        }        
+        }
         
         // проверка на победу
         if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >= 6) {
@@ -162,7 +182,6 @@ void Game::game() {
         }
         
         std::getline(std::cin, entered);
-        
     }
 }
 
@@ -180,6 +199,9 @@ bool Game::energy_lost() {
         current_time = std::chrono::steady_clock::now();
 
     }
+    if (show_pict_) {
+        picture_.show_scream(4);
+    }
     return true;
     
 }
@@ -195,9 +217,17 @@ bool Game::look_cams() {
         bool found = false;
         for (int i = 0; i < 11; i++ ) {
             if (cam_names_[i] == entered_cam) {
+            	bool bonnie = (cam_names_[i] == Bonnie.way_[Bonnie.place_-1]);
+            	bool chica = (cam_names_[i] == Chica.way_[Chica.place_-1]);
+            	bool foxy = (Foxy.place_ == 2);
+            	int foxy_stage = Foxy.stage_;
+            	bool freddy = (cam_names_[i] == Freddy.way_[Freddy.place_-1]);
+            	
                 // проверка аниматроников на камере
+/*                
                 if (cam_names_[i] == Bonnie.way_[Bonnie.place_-1]) {
-                    std::cout << "Bonnie is here!" << std::endl;
+                    bonny
+                  std::cout << "Bonnie is here!" << std::endl;
                 }
                 if (cam_names_[i] == Chica.way_[Chica.place_-1]) {
                     std::cout << "Chica is here!" << std::endl;
@@ -220,39 +250,74 @@ bool Game::look_cams() {
                 if (cam_names_[i] == "2A" and Foxy.place_ == 2) {
                     std::cout << "FOXY IS RUNNING!" << std::endl;
                 }
+*/              if (show_pict_) {
+                    picture_.show_picture(cam_names_[i], bonnie, chica, foxy, foxy_stage, freddy);
+                }
+                else {
+                    picture_.show_text(cam_names_[i], bonnie, chica, foxy, foxy_stage, freddy);
+                }
                 
                 // двигаем Фредди тут, а не ниже, зависим от просмотра камеры
                 if (cam_names_[i] == Freddy.way_[Freddy.place_-1] and cam_names_[i] != "4B") {
-                    std::cout << "Freddy is here!" << std::endl;
+//                    std::cout << "Freddy is here!" << std::endl;
                     Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_);
                 }
                 else if (cam_names_[i] == Freddy.way_[Freddy.place_-1] and cam_names_[i] == "4B") {
-                    std::cout << "Freddy is here!" << std::endl;
+//                    std::cout << "Freddy is here!" << std::endl;
                     Freddy.move_anim(gen_rand_, rdoor_.door_close_, true, time_);
                 }
+
                 else if (cam_names_[i] != Freddy.way_[Freddy.place_-1]) {
                     // заскримерить может только тут
                     Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_);
-                    if (Freddy.scream_) {
-                        std::cout << "Freddy is screaming, you lost" << std::endl;
+                    if (Freddy.scream_ and show_pict_) {
+//                        std::cout << "Freddy is screaming, you lost" << std::endl;
+                        picture_.show_scream(4);
                         return true;
                     }
-                }           
+                    else if (Freddy.scream_ and not show_pict_) {
+                        picture_.show_text_scream(4);
+                        return true;
+                    }   
+                }
+       
                 
                 // двигаем аниматроников, проверка на скример
                 Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
                 if (Bonnie.scream_) {
-                    std::cout << "Bonnie is screaming, you lost" << std::endl;
+//                    std::cout << "Bonnie is screaming, you lost" << std::endl;
+                    if (show_pict_) {
+                        picture_.show_scream(1);
+                    }
+                    else {
+                        picture_.show_text_scream(1);
+                    }
                     return true;
                 }
                 Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
                 if (Chica.scream_) {
-                    std::cout << "Chica is screaming, you lost" << std::endl;
+//                    std::cout << "Chica is screaming, you lost" << std::endl;
+
+                    if (show_pict_) {
+                        picture_.show_scream(2);
+                    }
+                    else {
+                        picture_.show_text_scream(2);
+                    }
+                    
                     return true;
                 }
                 Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
                 if (Foxy.scream_) {
-                    std::cout << "Foxy is screaming, you lost" << std::endl;
+//                    std::cout << "Foxy is screaming, you lost" << std::endl;
+
+                    if (show_pict_) {
+                        picture_.show_scream(3);
+                    }
+                    else {
+                        picture_.show_text_scream(3);
+                    }
+                    
                     return true;
                 }
                 found = true;
@@ -288,17 +353,44 @@ bool Game::look_cams() {
 void Game::create_anims() {
     Bonnie.way_ = {"1A", "1B", "5", "3", "2A", "2B"};
     Bonnie.last_move_time_ = std::chrono::steady_clock::now();
-    Bonnie.intellegence_ = {1, 1, 1, 2, 2, 3};
     
     Chica.way_ = {"1A", "1B", "7", "6", "4A", "4B"};
     Chica.last_move_time_ = std::chrono::steady_clock::now();
-    Chica.intellegence_ = {1, 1, 1, 1, 2, 2};
     
     Foxy.last_move_time_ = std::chrono::steady_clock::now();
-    Foxy.intellegence_ = {0, 1, 2, 3, 3, 4};
     
     Freddy.last_move_time_ = std::chrono::steady_clock::now();
-    Freddy.intellegence_ = {0, 0, 0, 1, 3, 4};
+    
+    if (num_night_ == 1) {
+        Bonnie.intellegence_ = {1, 1, 2, 3, 3, 3};
+        Chica.intellegence_ = {0, 0, 1, 2, 2, 2};
+        Foxy.intellegence_ = {0, 0, 0, 0, 0, 1};
+        Freddy.intellegence_ = {0, 0, 0, 0, 0, 0};
+    }
+    else if (num_night_ == 2) {
+        Bonnie.intellegence_ = {3, 3, 3, 4, 5, 6};
+        Chica.intellegence_ = {1, 1, 1, 2, 3, 3};
+        Foxy.intellegence_ = {0, 0, 0, 2, 3, 3};
+        Freddy.intellegence_ = {0, 0, 0, 0, 0, 0};
+    }
+    else if (num_night_ == 3) {
+        Bonnie.intellegence_ = {0, 1, 1, 2, 2, 3};
+        Chica.intellegence_ = {5, 5, 5, 6, 7, 7};
+        Foxy.intellegence_ = {2, 2, 2, 3, 4, 4};
+        Freddy.intellegence_ = {0, 1, 1, 1, 1, 1};
+    }
+    else if (num_night_ == 4) {
+        Bonnie.intellegence_ = {2, 3, 4, 4, 5, 5};
+        Chica.intellegence_ = {3, 3, 4, 5, 6, 6};
+        Foxy.intellegence_ = {4, 4, 5, 6, 7, 8};
+        Freddy.intellegence_ = {1, 1, 1, 2, 2, 2};
+    }
+    else if (num_night_ == 5) {
+        Bonnie.intellegence_ = {5, 5, 6, 6, 7, 8};
+        Chica.intellegence_ = {7, 7, 7, 8, 8, 9};
+        Foxy.intellegence_ = {5, 5, 6, 6, 7, 7};
+        Freddy.intellegence_ = {1, 2, 3, 3, 3, 3};
+    }
 }
 
 void Game::create_cams() {

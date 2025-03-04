@@ -14,6 +14,9 @@
 #include "Animatronic.hpp"
 #include "Fox.hpp"
 #include "Fredd.hpp"
+#include "Picture.hpp"
+
+class Menu;
 
 class Game {
 
@@ -24,9 +27,10 @@ class Game {
     friend class Random;
     friend class Animatronic;
     friend class Fredd;
+    friend class Menu;
     
 	public:
-	    Game();
+	    Game(int num_night, bool show_pict);
 	    void start_game();
             ~Game();	
 	private:
@@ -38,6 +42,8 @@ class Game {
 	    bool look_cams();
 	    
 	protected:
+	    int num_night_;
+	    bool show_pict_;
 	    int time_;
 	
 	    std::array<std::string, 11> cam_names_; // создание камер
@@ -53,6 +59,8 @@ class Game {
 	    Energy energy_;
 	    
 	    Random gen_rand_;
+	    
+	    Picture picture_;
 	    
 	    // похожие аниматроники
 	    Animatronic Bonnie;

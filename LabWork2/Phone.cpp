@@ -2,6 +2,9 @@
 #include <string>
 #include <iostream>
 
+#include <string>
+#include <fstream>
+
 Phone::Phone() {}
 
 void Phone::introduction() {
