@@ -1,7 +1,7 @@
-#include <iostream>
-#include "Game.hpp"
-#include "Player.hpp"
-#include "Cam.hpp"
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "Menu.hpp"
 
 int main() {
