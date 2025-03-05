@@ -28,9 +28,9 @@ class Fox {
     int stage_; // from 1 to 5
     bool scream_;
 
-    int stand_time_;   // время между стадиями
-    int running_time_; // время бега на 2A (до смерти)
-    std::chrono::steady_clock::time_point last_move_time_; // время перехода на A2
+    int stand_time_;   // time between stages
+    int running_time_; // time of running on 2A (before death)
+    std::chrono::steady_clock::time_point last_move_time_; // timing of coming to 2A
 };
 
 #endif
