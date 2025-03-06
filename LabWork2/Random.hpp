@@ -10,6 +10,9 @@ labwork2
 class Game;
 class Animatronic;
 
+/**
+ * @brief class is used to get random numbers
+ */
 class Random {
     friend class Game;
     friend class Animatronic;

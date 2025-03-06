@@ -9,6 +9,9 @@ labwork2
 
 class Game;
 
+/**
+ * @brief class describes cameras
+ */
 class Cam {
     friend class Game;
 

@@ -7,6 +7,9 @@ labwork2
 
 #include "Game.hpp"
 
+/**
+ * @brief class describes the menu of the game
+ */
 class Menu {
     friend class Game;
 
@@ -20,8 +23,8 @@ class Menu {
     void night_check();
     void start_night();
 
-    bool show_pict_; // пихнем в Game
-    int num_night_;  // пихнем в Game
+    bool show_pict_; // push it in class Game
+    int num_night_;  // push it in class Game
 };
 
 #endif

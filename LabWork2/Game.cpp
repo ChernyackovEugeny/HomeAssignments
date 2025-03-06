@@ -15,6 +15,7 @@ Game::Game(int num_night, bool show_pict) : num_night_(num_night), show_pict_(sh
     time_ = 0;
 }
 
+/// @brief start of the game
 void Game::start_game() {
     // instruction
     phone_.introduction();
@@ -26,6 +27,7 @@ void Game::start_game() {
     game();
 }
 
+/// @brief playing the game
 void Game::game() {
     std::string entered;
     std::getline(std::cin, entered);
@@ -191,6 +193,8 @@ void Game::game() {
     }
 }
 
+/// @brief if player's energy is empty
+/// @return returns true if the player wins, if the player looses returns false
 bool Game::energy_lost() {
     int seconds_left = gen_rand_.get_rand(7, 15);
     auto current_time = std::chrono::steady_clock::now();
@@ -213,6 +217,8 @@ bool Game::energy_lost() {
     return true;
 }
 
+/// @brief looking cameras
+/// @return returns true if the player is killed, otherwise returns false
 bool Game::look_cams() {
     std::cout << "Here are the cams' names, input one to look through it: 1A, 1B, 5, 7, 1C, 3, 6, "
                  "2A, 2B, 4A, 4B; to escape cams mode input 'cams off' or 'coff'"
@@ -324,6 +330,7 @@ bool Game::look_cams() {
     return false;
 }
 
+/// @brief creating of the animatronics
 void Game::create_anims() {
     Bonnie.way_ = {"1A", "1B", "5", "3", "2A", "2B"};
     Bonnie.last_move_time_ = std::chrono::steady_clock::now();
@@ -363,6 +370,7 @@ void Game::create_anims() {
     }
 }
 
+/// @brief creating of the cameras
 void Game::create_cams() {
     for (int i = 0; i < 11; i++) {
         cams_[i] = Cam(cam_names_[i]);

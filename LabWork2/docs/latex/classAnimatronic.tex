@@ -1,0 +1,83 @@
+\hypertarget{classAnimatronic}{}\doxysection{Animatronic Class Reference}
+\label{classAnimatronic}\index{Animatronic@{Animatronic}}
+
+
+class describes the behavior of animatronic  
+
+
+
+
+{\ttfamily \#include $<$Animatronic.\+hpp$>$}
+
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAnimatronic_a46d98a9ee486d3e0b2f7153e75aaed76}{move\+\_\+anim}} (\mbox{\hyperlink{classRandom}{Random}} \&gen\+\_\+rand\+\_\+, bool door, int time)
+\begin{DoxyCompactList}\small\item\em function moves animatronic \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAnimatronic_aa6d4b1b7e8b4eb5b821adb0526971e1b}\label{classAnimatronic_aa6d4b1b7e8b4eb5b821adb0526971e1b}} 
+std\+::array$<$ int, 6 $>$ {\bfseries intellegence\+\_\+}
+\item 
+\mbox{\Hypertarget{classAnimatronic_ac4876e8d9431416eb92629f0da542327}\label{classAnimatronic_ac4876e8d9431416eb92629f0da542327}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries way\+\_\+}
+\item 
+\mbox{\Hypertarget{classAnimatronic_a0023fb79a13e46e0c39365ac2f568d07}\label{classAnimatronic_a0023fb79a13e46e0c39365ac2f568d07}} 
+bool \mbox{\hyperlink{classAnimatronic_a0023fb79a13e46e0c39365ac2f568d07}{scream\+\_\+}}
+\begin{DoxyCompactList}\small\item\em whether animatronic screams or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAnimatronic_a60c68925c437d87d1a3ccb873e9c3218}\label{classAnimatronic_a60c68925c437d87d1a3ccb873e9c3218}} 
+int \mbox{\hyperlink{classAnimatronic_a60c68925c437d87d1a3ccb873e9c3218}{place\+\_\+}}
+\begin{DoxyCompactList}\small\item\em where is the animatronic \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAnimatronic_a63c867ddaa27834c727fab58c3ae67b7}\label{classAnimatronic_a63c867ddaa27834c727fab58c3ae67b7}} 
+int {\bfseries time\+\_\+before\+\_\+scream\+\_\+}
+\item 
+\mbox{\Hypertarget{classAnimatronic_ac45a5c1e35884f4b25643bffc00da860}\label{classAnimatronic_ac45a5c1e35884f4b25643bffc00da860}} 
+int {\bfseries near\+\_\+door\+\_\+time\+\_\+}
+\item 
+\mbox{\Hypertarget{classAnimatronic_a4783d124af39ebb2e065ad741df6d54a}\label{classAnimatronic_a4783d124af39ebb2e065ad741df6d54a}} 
+int {\bfseries stand\+\_\+time\+\_\+}
+\item 
+\mbox{\Hypertarget{classAnimatronic_a4b452da768c6e4a19622d559cb551927}\label{classAnimatronic_a4b452da768c6e4a19622d559cb551927}} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point {\bfseries last\+\_\+move\+\_\+time\+\_\+}
+\item 
+\mbox{\Hypertarget{classAnimatronic_aee4bf0f6fffc0be957856cdae9e3b26d}\label{classAnimatronic_aee4bf0f6fffc0be957856cdae9e3b26d}} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point {\bfseries near\+\_\+opened\+\_\+door\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAnimatronic_aa2fab026580d6f14280c2ffb8063a314}\label{classAnimatronic_aa2fab026580d6f14280c2ffb8063a314}} 
+class {\bfseries Game}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class describes the behavior of animatronic 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAnimatronic_a46d98a9ee486d3e0b2f7153e75aaed76}\label{classAnimatronic_a46d98a9ee486d3e0b2f7153e75aaed76}} 
+\index{Animatronic@{Animatronic}!move\_anim@{move\_anim}}
+\index{move\_anim@{move\_anim}!Animatronic@{Animatronic}}
+\doxysubsubsection{\texorpdfstring{move\_anim()}{move\_anim()}}
+{\footnotesize\ttfamily void Animatronic\+::move\+\_\+anim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRandom}{Random}} \&}]{gen\+\_\+rand\+\_\+,  }\item[{bool}]{door,  }\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+function moves animatronic 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gen\+\_\+rand\+\_\+} & to get rundom numbers \\
+\hline
+{\em door} & to check whether the door is opened or not \\
+\hline
+{\em time} & for checking the intellegence of animatronic \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Animatronic.\+hpp\item 
+Animatronic.\+cpp\end{DoxyCompactItemize}

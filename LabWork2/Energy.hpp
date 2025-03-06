@@ -9,6 +9,9 @@ labwork2
 
 class Game;
 
+/**
+ * @brief class describes the player's energy
+ */
 class Energy {
     friend class Game;
 

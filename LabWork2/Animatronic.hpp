@@ -13,6 +13,9 @@ labwork2
 
 class Game;
 
+/**
+ * @brief class describes the behavior of animatronic
+ */
 class Animatronic {
     friend class Game;
 
@@ -26,7 +29,9 @@ class Animatronic {
 
     std::array<int, 6> intellegence_;
     std::vector<std::string> way_;
+    /// whether animatronic screams or not
     bool scream_;
+    /// where is the animatronic
     int place_;
 
     int time_before_scream_;

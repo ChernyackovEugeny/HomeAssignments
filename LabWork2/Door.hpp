@@ -7,6 +7,9 @@ labwork2
 
 class Game;
 
+/**
+ * @brief class describes the office's doors
+ */
 class Door {
     friend Game;
 

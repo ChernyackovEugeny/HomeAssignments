@@ -8,6 +8,9 @@ labwork2
 #include <string>
 class Game;
 
+/**
+ * @brief class describes the introduction phone
+ */
 class Phone {
     friend class Game;
 

@@ -16,6 +16,10 @@ Fox::Fox() {
     running_time_ = 10;
 }
 
+/// @brief function moves the animatronic "Foxy"
+/// @param gen_rand_ to get random numbers
+/// @param left_door to check whether the door is opened or not
+/// @param time for checking the intellegence of animatronic
 void Fox::move_anim(Random &gen_rand_, bool left_door, int time) {
     auto cur_time = std::chrono::steady_clock::now();
 

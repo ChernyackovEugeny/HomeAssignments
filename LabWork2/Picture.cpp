@@ -10,6 +10,13 @@ labwork2
 Picture::Picture() {
 }
 
+/// @brief function shows pictures
+/// @param cam_name shows the name of the current camera
+/// @param bonnie shows whether Bonny is on the current camera or not
+/// @param chica shows whether Chica is on the current camera or not
+/// @param foxy shows whether Foxy is on the current camera or not
+/// @param foxy_stage shows the stage of Foxy
+/// @param freddy shows whether Freddy is on the current camera or not
 void Picture::show_picture(std::string cam_name, bool bonnie, bool chica, bool foxy, int foxy_stage,
                            bool freddy) {
     std::string result = "arts/";
@@ -41,6 +48,13 @@ void Picture::show_picture(std::string cam_name, bool bonnie, bool chica, bool f
     }
 }
 
+/// @brief function text feedback from the game
+/// @param cam_name shows the name of the current camera
+/// @param bonnie shows whether Bonny is on the current camera or not
+/// @param chica shows whether Chica is on the current camera or not
+/// @param foxy shows whether Foxy is on the current camera or not
+/// @param foxy_stage shows the stage of Foxy
+/// @param freddy shows whether Freddy is on the current camera or not
 void Picture::show_text(std::string cam_name, bool bonnie, bool chica, bool foxy, int foxy_stage,
                         bool freddy) {
     if (bonnie) {
@@ -69,6 +83,8 @@ void Picture::show_text(std::string cam_name, bool bonnie, bool chica, bool foxy
     }
 }
 
+/// @brief function screams the player with picture
+/// @param scream shows whether the player is screammed or not
 void Picture::show_scream(int scream) {
     if (scream != 0) {
         std::string result = "arts/Scream_";
@@ -90,6 +106,8 @@ void Picture::show_scream(int scream) {
     }
 }
 
+/// @brief function screams the player with text
+/// @param scream shows whether the player is screammed or not
 void Picture::show_text_scream(int scream) {
     if (scream != 0) {
         if (scream == 1) {

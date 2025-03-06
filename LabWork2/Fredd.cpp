@@ -12,6 +12,11 @@ Fredd::Fredd()
       _4b_time_(30), time_before_scream_(10) {
 }
 
+/// @brief function moves animatronic
+/// @param gen_rand_ to get rundom numbers
+/// @param door to check whether the door is opened or not
+/// @param _4b to check whether Freddy is on 4B or not
+/// @param time for checking the intellegence of animatronic
 void Fredd::move_anim(Random &gen_rand_, bool door, bool _4b, int time) {
     auto cur_time = std::chrono::steady_clock::now();
 

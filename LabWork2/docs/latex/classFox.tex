@@ -1,0 +1,80 @@
+\hypertarget{classFox}{}\doxysection{Fox Class Reference}
+\label{classFox}\index{Fox@{Fox}}
+
+
+class describes the behavior of the animatronic \char`\"{}\+Foxy\char`\"{}  
+
+
+
+
+{\ttfamily \#include $<$Fox.\+hpp$>$}
+
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFox_a70d717051d773ef6e4481d348f9eab32}{move\+\_\+anim}} (\mbox{\hyperlink{classRandom}{Random}} \&gen\+\_\+rand\+\_\+, bool left\+\_\+door, int time)
+\begin{DoxyCompactList}\small\item\em function moves the animatronic \char`\"{}\+Foxy\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFox_a3b56e5bc032609f8ef757b1880c2985a}\label{classFox_a3b56e5bc032609f8ef757b1880c2985a}} 
+std\+::array$<$ int, 6 $>$ {\bfseries intellegence\+\_\+}
+\item 
+\mbox{\Hypertarget{classFox_a4958cf21232a4ff4273661f9df2e771c}\label{classFox_a4958cf21232a4ff4273661f9df2e771c}} 
+std\+::array$<$ std\+::string, 2 $>$ {\bfseries way\+\_\+}
+\item 
+\mbox{\Hypertarget{classFox_ad9d0cd8f75cd6612689a5552ca3650f8}\label{classFox_ad9d0cd8f75cd6612689a5552ca3650f8}} 
+int \mbox{\hyperlink{classFox_ad9d0cd8f75cd6612689a5552ca3650f8}{place\+\_\+}}
+\begin{DoxyCompactList}\small\item\em where is the animatronic \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFox_a658dfd4507440d675ea864cce320b3a2}\label{classFox_a658dfd4507440d675ea864cce320b3a2}} 
+int \mbox{\hyperlink{classFox_a658dfd4507440d675ea864cce320b3a2}{stage\+\_\+}}
+\begin{DoxyCompactList}\small\item\em the stage of Foxy from 1 to 5 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFox_a958bd40efc1248e49f33c6843dca058a}\label{classFox_a958bd40efc1248e49f33c6843dca058a}} 
+bool \mbox{\hyperlink{classFox_a958bd40efc1248e49f33c6843dca058a}{scream\+\_\+}}
+\begin{DoxyCompactList}\small\item\em whether animatronic screams or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFox_a52d6074a6ab17dd3e0db91c1901adbaf}\label{classFox_a52d6074a6ab17dd3e0db91c1901adbaf}} 
+int \mbox{\hyperlink{classFox_a52d6074a6ab17dd3e0db91c1901adbaf}{stand\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em time between stages \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFox_a477a74046194944f5a7dd4276796a4b3}\label{classFox_a477a74046194944f5a7dd4276796a4b3}} 
+int \mbox{\hyperlink{classFox_a477a74046194944f5a7dd4276796a4b3}{running\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em time of running on 2A (before death) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFox_afda589116967dc5e3ab105cfebdc9863}\label{classFox_afda589116967dc5e3ab105cfebdc9863}} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classFox_afda589116967dc5e3ab105cfebdc9863}{last\+\_\+move\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em timing of coming to 2A \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFox_aa2fab026580d6f14280c2ffb8063a314}\label{classFox_aa2fab026580d6f14280c2ffb8063a314}} 
+class {\bfseries Game}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class describes the behavior of the animatronic \char`\"{}\+Foxy\char`\"{} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFox_a70d717051d773ef6e4481d348f9eab32}\label{classFox_a70d717051d773ef6e4481d348f9eab32}} 
+\index{Fox@{Fox}!move\_anim@{move\_anim}}
+\index{move\_anim@{move\_anim}!Fox@{Fox}}
+\doxysubsubsection{\texorpdfstring{move\_anim()}{move\_anim()}}
+{\footnotesize\ttfamily void Fox\+::move\+\_\+anim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRandom}{Random}} \&}]{gen\+\_\+rand\+\_\+,  }\item[{bool}]{left\+\_\+door,  }\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+function moves the animatronic \char`\"{}\+Foxy\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gen\+\_\+rand\+\_\+} & to get random numbers \\
+\hline
+{\em left\+\_\+door} & to check whether the door is opened or not \\
+\hline
+{\em time} & for checking the intellegence of animatronic \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fox.\+hpp\item 
+Fox.\+cpp\end{DoxyCompactItemize}

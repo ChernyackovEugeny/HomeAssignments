@@ -12,6 +12,10 @@ Animatronic::Animatronic()
     : scream_(false), place_(1), time_before_scream_(9), near_door_time_(12), stand_time_(0) {
 }
 
+/// @brief function moves animatronic
+/// @param gen_rand_ to get rundom numbers
+/// @param door to check whether the door is opened or not
+/// @param time for checking the intellegence of animatronic
 void Animatronic::move_anim(Random &gen_rand_, bool door, int time) {
     auto cur_time = std::chrono::steady_clock::now();
 

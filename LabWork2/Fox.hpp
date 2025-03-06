@@ -12,6 +12,9 @@ labwork2
 
 class Game;
 
+/**
+ * @brief class describes the behavior of the animatronic "Foxy"
+ */
 class Fox {
     friend class Game;
 
@@ -24,13 +27,19 @@ class Fox {
 
     std::array<int, 6> intellegence_;
     std::array<std::string, 2> way_;
+    /// where is the animatronic
     int place_;
-    int stage_; // from 1 to 5
+    /// the stage of Foxy from 1 to 5
+    int stage_;
+    /// whether animatronic screams or not
     bool scream_;
 
-    int stand_time_;   // time between stages
-    int running_time_; // time of running on 2A (before death)
-    std::chrono::steady_clock::time_point last_move_time_; // timing of coming to 2A
+    /// time between stages
+    int stand_time_;
+    /// time of running on 2A (before death)
+    int running_time_;
+    /// timing of coming to 2A
+    std::chrono::steady_clock::time_point last_move_time_;
 };
 
 #endif

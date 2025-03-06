@@ -10,6 +10,7 @@ labwork2
 Phone::Phone() {
 }
 
+/// @brief introduction to the game
 void Phone::introduction() {
     std::cout << "Hello there, check out the conrols:" << std::endl;
     std::cout << "'lld' or 'light left door'; 'lrd' or 'light right door' to check entities near "

@@ -11,11 +11,13 @@ Menu::Menu() {
     picture_check();
 }
 
+/// @brief menu of the game
 void Menu::menu() {
     night_check();
     start_night();
 }
 
+/// @brief function check whether the game will show pictures or not
 void Menu::picture_check() {
     std::cout << "Welcome to game!" << std::endl;
     std::cout << "Can you, please, extand your terminal to full screan? We need to check a picture"
@@ -45,6 +47,7 @@ void Menu::picture_check() {
     }
 }
 
+/// @brief function checks the number of night
 void Menu::night_check() {
     std::cout << "Enter the number of the night you want to play(the number from 1 to 5)"
               << std::endl;
@@ -71,6 +74,7 @@ void Menu::night_check() {
     }
 }
 
+/// @brief function starts the night
 void Menu::start_night() {
     Game a(num_night_, show_pict_);
     a.start_game();

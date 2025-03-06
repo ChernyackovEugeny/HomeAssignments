@@ -8,6 +8,9 @@ labwork2
 
 class Game;
 
+/**
+ * @brief class is used to get feedback from the game
+ */
 class Picture {
     friend class Game;
 
@@ -23,7 +26,8 @@ class Picture {
     void show_text(std::string cam_name, bool bonnie, bool chica, bool foxy, int foxy_stage,
                    bool freddy);
     void show_text_scream(int scream);
-
+    
+    /// whether the game will show pictures or not
     bool accept_picture_;
 };
 

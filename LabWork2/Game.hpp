@@ -22,6 +22,9 @@ labwork2
 
 class Menu;
 
+/**
+ * @brief class describes the game
+ */
 class Game {
 
     friend class Cam;

@@ -1,0 +1,82 @@
+\hypertarget{classFredd}{}\doxysection{Fredd Class Reference}
+\label{classFredd}\index{Fredd@{Fredd}}
+
+
+class describes the behavior of the animatronic \char`\"{}\+Freddy\char`\"{}  
+
+
+
+
+{\ttfamily \#include $<$Fredd.\+hpp$>$}
+
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFredd_aafe697ddbdc2170b5a7c47139a59f715}{move\+\_\+anim}} (\mbox{\hyperlink{classRandom}{Random}} \&gen\+\_\+rand\+\_\+, bool door, bool \+\_\+4b, int time)
+\begin{DoxyCompactList}\small\item\em function moves animatronic \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFredd_a8278d22db6823ac2534b457e06b988ad}\label{classFredd_a8278d22db6823ac2534b457e06b988ad}} 
+std\+::array$<$ std\+::string, 6 $>$ {\bfseries way\+\_\+}
+\item 
+\mbox{\Hypertarget{classFredd_a0e5f07c7bc898f4a2b656401f675e1ad}\label{classFredd_a0e5f07c7bc898f4a2b656401f675e1ad}} 
+int \mbox{\hyperlink{classFredd_a0e5f07c7bc898f4a2b656401f675e1ad}{place\+\_\+}}
+\begin{DoxyCompactList}\small\item\em whether animatronic screams or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFredd_a1ee8cdc2a92400eb0627cf9322579efa}\label{classFredd_a1ee8cdc2a92400eb0627cf9322579efa}} 
+bool \mbox{\hyperlink{classFredd_a1ee8cdc2a92400eb0627cf9322579efa}{scream\+\_\+}}
+\begin{DoxyCompactList}\small\item\em where is the animatronic \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFredd_aec023c79949137bca1706f32a102422c}\label{classFredd_aec023c79949137bca1706f32a102422c}} 
+int {\bfseries stand\+\_\+time\+\_\+}
+\item 
+\mbox{\Hypertarget{classFredd_a7325a42212511f0087c3b65e592fdaad}\label{classFredd_a7325a42212511f0087c3b65e592fdaad}} 
+int \mbox{\hyperlink{classFredd_a7325a42212511f0087c3b65e592fdaad}{\+\_\+4b\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em time, which Freddy must be on 4b \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFredd_a22100ca533cf6b3266bbded44256f440}\label{classFredd_a22100ca533cf6b3266bbded44256f440}} 
+int {\bfseries time\+\_\+before\+\_\+scream\+\_\+}
+\item 
+\mbox{\Hypertarget{classFredd_a140f6d47b8275897408e3ab88da88113}\label{classFredd_a140f6d47b8275897408e3ab88da88113}} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point {\bfseries last\+\_\+move\+\_\+time\+\_\+}
+\item 
+\mbox{\Hypertarget{classFredd_aae150d3dfee5b873c6ccd70ef453d166}\label{classFredd_aae150d3dfee5b873c6ccd70ef453d166}} 
+std\+::array$<$ int, 6 $>$ {\bfseries intellegence\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFredd_aa2fab026580d6f14280c2ffb8063a314}\label{classFredd_aa2fab026580d6f14280c2ffb8063a314}} 
+class {\bfseries Game}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class describes the behavior of the animatronic \char`\"{}\+Freddy\char`\"{} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFredd_aafe697ddbdc2170b5a7c47139a59f715}\label{classFredd_aafe697ddbdc2170b5a7c47139a59f715}} 
+\index{Fredd@{Fredd}!move\_anim@{move\_anim}}
+\index{move\_anim@{move\_anim}!Fredd@{Fredd}}
+\doxysubsubsection{\texorpdfstring{move\_anim()}{move\_anim()}}
+{\footnotesize\ttfamily void Fredd\+::move\+\_\+anim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRandom}{Random}} \&}]{gen\+\_\+rand\+\_\+,  }\item[{bool}]{door,  }\item[{bool}]{\+\_\+4b,  }\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+function moves animatronic 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gen\+\_\+rand\+\_\+} & to get rundom numbers \\
+\hline
+{\em door} & to check whether the door is opened or not \\
+\hline
+{\em \+\_\+4b} & to check whether Freddy is on 4B or not \\
+\hline
+{\em time} & for checking the intellegence of animatronic \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fredd.\+hpp\item 
+Fredd.\+cpp\end{DoxyCompactItemize}

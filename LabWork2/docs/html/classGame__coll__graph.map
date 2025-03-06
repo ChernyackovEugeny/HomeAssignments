@@ -1,0 +1,12 @@
+<map id="Game" name="Game">
+<area shape="rect" id="node1" title="class describes the game" alt="" coords="405,109,466,136"/>
+<area shape="rect" id="node2" href="$classRandom.html" title="class is used to get random numbers" alt="" coords="5,5,81,32"/>
+<area shape="rect" id="node3" href="$classEnergy.html" title="class describes the player&#39;s energy" alt="" coords="109,5,175,32"/>
+<area shape="rect" id="node4" href="$classAnimatronic.html" title="class describes the behavior of animatronic" alt="" coords="199,5,301,32"/>
+<area shape="rect" id="node5" href="$classFredd.html" title="class describes the behavior of the animatronic &quot;Freddy&quot;" alt="" coords="325,5,383,32"/>
+<area shape="rect" id="node6" href="$classPhone.html" title="class describes the introduction phone" alt="" coords="408,5,471,32"/>
+<area shape="rect" id="node7" href="$classFox.html" title="class describes the behavior of the animatronic &quot;Foxy&quot;" alt="" coords="495,5,541,32"/>
+<area shape="rect" id="node8" href="$classPicture.html" title="class is used to get feedback from the game" alt="" coords="565,5,631,32"/>
+<area shape="rect" id="node9" href="$classDoor.html" title="class describes the office&#39;s doors" alt="" coords="655,5,709,32"/>
+<area shape="rect" id="node10" href="$classPlayer.html" title="class describes special functions of the player" alt="" coords="733,5,796,32"/>
+</map>

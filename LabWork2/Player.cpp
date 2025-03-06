@@ -7,6 +7,8 @@ labwork2
 Player::Player() : cams_status_(false), fan_status_(true) {
 }
 
+/// @brief function pushes the Freddy's nose
+/// @return returns the Freddy's nose sound
 std::string Player::push_nose() {
     return "beep-beep";
 }
