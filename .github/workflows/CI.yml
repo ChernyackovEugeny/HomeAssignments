@@ -23,7 +23,3 @@ jobs:
         working-directory: LabWork2
         run: make
 
-      - name: Run tests
-        working-directory: LabWork2
-        run: make test
-

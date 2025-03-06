@@ -18,6 +18,8 @@ $(PROJECT): main.o $(OBJ)
 
 all: $(PROJECT)
 
+docs:
+	doxygen Doxyfile
 
 .PHONY: clean cleanall
 
