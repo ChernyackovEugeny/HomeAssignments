@@ -122,5 +122,34 @@ void Picture::show_text_scream(int scream) {
     }
 }
 
+void Picture::show_office(int bonnie, int chica, bool left_light, bool right_light, bool left_close, bool right_close) {
+    std::string result = "arts/office";
+    if (left_light) {
+        result = result + "_ll";
+    }
+    if (right_light) {
+        result = result + "_rl";
+    }
+    if (left_close) {
+        result = result + "_lc";
+    }
+    if (right_close) {
+        result = result + "_rc";
+    }
+    if (bonnie == 7) {
+        result = result + "_B";
+    }
+    if (chica == 7) {
+        result = result + "_C";
+    }
+    result = result + ".txt";
+
+    std::ifstream file(result);
+    std::string line;
+    while (std::getline(file, line)) {
+        std::cout << line << std::endl;
+    }
+}
+
 Picture::~Picture() {
 }

@@ -27,6 +27,8 @@ class Picture {
                    bool freddy);
     void show_text_scream(int scream);
     
+    void show_office(int bonnie, int chica, bool left_light, bool right_light, bool left_close, bool right_close);
+    
     /// whether the game will show pictures or not
     bool accept_picture_;
 };

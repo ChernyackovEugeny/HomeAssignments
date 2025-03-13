@@ -107,64 +107,85 @@ void Game::game() {
             }
             player_.cams_status_ = false;
         }
-
+        
         // doors light
         if (entered == "light left door" or entered == "lld") {
-
-            if (Bonnie.place_ == 7) {
-                std::cout << "Bonnie is looking at you!" << std::endl;
-            } else {
-                std::cout << "There is noone here" << std::endl;
-            }
             ldoor_.door_light_ = true;
+            if (not show_pict_) {
+                if (Bonnie.place_ == 7) {
+                    std::cout << "Bonnie is looking at you!" << std::endl;
+                } else {
+                    std::cout << "There is noone here" << std::endl;
+                }
+            }
         }
         if (entered == "unlight left door" or entered == "unlld") {
-            std::cout << "The left light is off" << std::endl;
             ldoor_.door_light_ = false;
+            if (not show_pict_) {
+                std::cout << "The left light is off" << std::endl;
+            }
         }
         if (entered == "light right door" or entered == "lrd") {
-
-            if (Chica.place_ == 7) {
-                std::cout << "Chica is looking at you!" << std::endl;
-            } else {
-                std::cout << "There is noone here" << std::endl;
-            }
-
             rdoor_.door_light_ = true;
+            if (not show_pict_) {
+                if (Chica.place_ == 7) {
+                    std::cout << "Chica is looking at you!" << std::endl;
+                } else {
+                    std::cout << "There is noone here" << std::endl;
+                }
+            }
         }
         if (entered == "unlight right door" or entered == "unlrd") {
-            std::cout << "The right light is off" << std::endl;
             rdoor_.door_light_ = false;
+            if (not show_pict_) {
+                std::cout << "The right light is off" << std::endl;
+            }
         }
 
         // doors close
-
         if (entered == "close left door" or entered == "cld") {
-            std::cout << "The left door is closed" << std::endl;
             ldoor_.door_close_ = true;
+            if (not show_pict_) {
+                std::cout << "The left door is closed" << std::endl;
+            }
         }
         if (entered == "open left door" or entered == "old") {
-            std::cout << "The left door is opened" << std::endl;
             ldoor_.door_close_ = false;
+            if (not show_pict_) {
+                std::cout << "The left door is opened" << std::endl;
+            }
         }
         if (entered == "close right door" or entered == "crd") {
-            std::cout << "The right door is closed" << std::endl;
-
             rdoor_.door_close_ = true;
+            if (not show_pict_) {
+                std::cout << "The right door is closed" << std::endl;
+            }
         }
         if (entered == "open right door" or entered == "ord") {
-            std::cout << "The right door is opened" << std::endl;
             rdoor_.door_close_ = false;
+            if (not show_pict_) {
+                std::cout << "The right door is opened" << std::endl;
+            }
+        }
+        
+        if (show_pict_) {
+            picture_.show_office(Bonnie.place_, Chica.place_, ldoor_.door_light_, rdoor_.door_light_, ldoor_.door_close_, rdoor_.door_close_);
         }
 
+
         // info about light, doors, energy, energy consumption
-        if (entered == "info") {
+        if (entered == "info" and not show_pict_) {
             std::cout << "Energy: " << energy_.cur_energy_
                       << "; Energy consumtion: " << energy_.energy_mult_ << "/6; Time: " << time_
                       << " am; Left light: " << ldoor_.door_light_
                       << "; Left close: " << ldoor_.door_close_
                       << "; Right light: " << rdoor_.door_light_
                       << "; Right close: " << rdoor_.door_close_ << std::endl;
+        }
+        if (show_pict_) {
+            std::cout << "Energy: " << energy_.cur_energy_
+                      << "; Energy consumtion: " << energy_.energy_mult_ << "/6; Time: " << time_
+                      << " am" << std::endl;
         }
 
         // push a nose
