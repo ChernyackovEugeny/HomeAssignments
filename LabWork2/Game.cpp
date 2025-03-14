@@ -23,89 +23,40 @@ void Game::start_game() {
     create_cams();
     create_anims();
     start_time_ = std::chrono::steady_clock::now();
+    
+    running = true;
 
     game();
 }
 
 /// @brief playing the game
 void Game::game() {
-    std::string entered;
-    std::getline(std::cin, entered);
     cur_time_ = std::chrono::steady_clock::now();
+    
+    // запускаем поток обновления игры
+    updateThread = std::thread(&Game::updateGame, this);
 
-    while (entered != "end_game") {
-        // change the energy
-        energy_.change_energy(cur_time_);
-
-        // energy check
-        if (energy_.cur_energy_ <= 0) {
-            if (energy_lost()) {
-                std::cout << "You lost" << std::endl;
-                break;
-            }
-            std::cout << "You win!" << std::endl;
+    while (running) {
+    
+        std::string entered;
+        std::getline(std::cin, entered);
+        if (not running) {
+            std::cin.clear();
+            std::cin.setstate(std::ios::failbit);
             break;
         }
-
-        // anims actions
-        Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
-        Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
-        Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
-        Freddy.move_anim(gen_rand_, rdoor_.door_close_, false,
-                         time_); // 'false' because moving freddy out of cameras
-
-        // scream check
-        if (Bonnie.scream_) {
-            if (show_pict_) {
-                picture_.show_scream(1);
-            } else {
-                picture_.show_text_scream(1);
-            }
-            break;
-        }
-        if (Chica.scream_) {
-            if (show_pict_) {
-                picture_.show_scream(2);
-            } else {
-                picture_.show_text_scream(2);
-            }
-            break;
-        }
-        if (Foxy.scream_) {
-            if (show_pict_) {
-                picture_.show_scream(3);
-            } else {
-                picture_.show_text_scream(3);
-            }
-            break;
-        }
-        if (Freddy.scream_) {
-            if (show_pict_) {
-                picture_.show_scream(4);
-            } else {
-                picture_.show_text_scream(4);
-            }
-            break;
-        }
-
-        // time update
-        cur_time_ = std::chrono::steady_clock::now();
-        time_ = std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count();
-
-        // energy multiplicator update
-        energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ +
-                               rdoor_.door_light_ + player_.cams_status_ + 1;
-
+        
         // payers action
-
         // cams check
         if (entered == "cams on" or entered == "con") {
             player_.cams_status_ = true;
-            // if the player was kiiled on cameras, end the cycle
-            if (look_cams()) {
-                break;
-            }
+            look_cams();
             player_.cams_status_ = false;
+        }
+        if (not running) {
+            std::cin.clear();
+            std::cin.setstate(std::ios::failbit);
+            break;
         }
         
         // doors light
@@ -202,15 +153,95 @@ void Game::game() {
             std::cout << "The fan is off" << std::endl;
             player_.fan_status_ = false;
         }
+    }
+    updateThread.join();
+}
+
+void Game::updateGame() {
+    while (running) {
+        // обновление каждую секунду
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        
+        // обновляем аниматроников, энергию
+        // если заскримели, завершить поток
+        
+        // change the energy
+        energy_.change_energy(cur_time_);
+
+        // energy check
+        if (energy_.cur_energy_ <= 0) {
+            running = false;
+            fclose(stdin);
+            
+            if (energy_lost()) {
+                std::cout << "You lost" << std::endl;
+            }
+            else {
+                std::cout << "You win!" << std::endl;
+            }
+        }
+
+        // anims actions
+        Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
+        Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
+        Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
+        
+        Freddy.move_anim(gen_rand_, rdoor_.door_close_, false,
+                         time_); // 'false' because moving freddy out of cameras
+
+        // scream check
+        if (Bonnie.scream_) {
+            if (show_pict_) {
+                picture_.show_scream(1);
+            } else {
+                picture_.show_text_scream(1);
+            }
+            running = false;
+            fclose(stdin);
+        }
+        if (Chica.scream_) {
+            if (show_pict_) {
+                picture_.show_scream(2);
+            } else {
+                picture_.show_text_scream(2);
+            }
+            running = false;
+            fclose(stdin);
+        }
+        if (Foxy.scream_) {
+            if (show_pict_) {
+                picture_.show_scream(3);
+            } else {
+                picture_.show_text_scream(3);
+            }
+            running = false;
+            fclose(stdin);
+        }
+        if (Freddy.scream_) {
+            if (show_pict_) {
+                picture_.show_scream(4);
+            } else {
+                picture_.show_text_scream(4);
+            }
+            running = false;
+            fclose(stdin);
+        }
+
+        // time update
+        cur_time_ = std::chrono::steady_clock::now();
+        time_ = std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count();
+
+        // energy multiplicator update
+        energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ +
+                               rdoor_.door_light_ + player_.cams_status_ + 1;
 
         // victory check
         if (std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count() >=
             6) {
             std::cout << "You won!" << std::endl;
-            break;
+            running = false;
+            fclose(stdin);
         }
-
-        std::getline(std::cin, entered);
     }
 }
 
@@ -239,17 +270,25 @@ bool Game::energy_lost() {
 }
 
 /// @brief looking cameras
-/// @return returns true if the player is killed, otherwise returns false
-bool Game::look_cams() {
+void Game::look_cams() {
     std::cout << "Here are the cams' names, input one to look through it: 1A, 1B, 5, 7, 1C, 3, 6, "
                  "2A, 2B, 4A, 4B; to escape cams mode input 'cams off' or 'coff'"
               << std::endl;
 
-    std::string entered_cam;
-    std::getline(std::cin, entered_cam);
-    cur_time_ = std::chrono::steady_clock::now();
-
-    while (entered_cam != "cams off" and entered_cam != "coff") {
+    std::string entered_cam = "";
+    while (entered_cam != "cams off" and entered_cam != "coff" and running) {
+    
+        std::string entered_cam;
+        std::getline(std::cin, entered_cam);
+        if (!running) {
+            std::cin.clear();
+            std::cin.setstate(std::ios::failbit);
+            break;
+        }
+        if (entered_cam == "cams off" or entered_cam == "coff") {
+            break;
+        }
+        
         // everything will work if player enter 1a instead of 1A
         for (char &c : entered_cam) {
             c = std::toupper(static_cast<unsigned char>(c));
@@ -268,56 +307,13 @@ bool Game::look_cams() {
                 } else {
                     picture_.show_text(cam_names_[i], bonnie, chica, foxy, foxy_stage, freddy);
                 }
-
+                
                 // moving Freddy here, because his moving depends on checking cameras by player
-                if (cam_names_[i] == Freddy.way_[Freddy.place_ - 1] and cam_names_[i] != "4B") {
-                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_);
-                } else if (cam_names_[i] == Freddy.way_[Freddy.place_ - 1] and
+                if (cam_names_[i] == Freddy.way_[Freddy.place_ - 1] and
                            cam_names_[i] == "4B") {
                     Freddy.move_anim(gen_rand_, rdoor_.door_close_, true, time_);
                 }
-
-                else if (cam_names_[i] != Freddy.way_[Freddy.place_ - 1]) {
-                    // Freddy can scream only there
-                    Freddy.move_anim(gen_rand_, rdoor_.door_close_, false, time_);
-                    if (Freddy.scream_ and show_pict_) {
-                        picture_.show_scream(4);
-                        return true;
-                    } else if (Freddy.scream_ and not show_pict_) {
-                        picture_.show_text_scream(4);
-                        return true;
-                    }
-                }
-
-                // moving animatronics, screamer check
-                Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
-                if (Bonnie.scream_) {
-                    if (show_pict_) {
-                        picture_.show_scream(1);
-                    } else {
-                        picture_.show_text_scream(1);
-                    }
-                    return true;
-                }
-                Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
-                if (Chica.scream_) {
-                    if (show_pict_) {
-                        picture_.show_scream(2);
-                    } else {
-                        picture_.show_text_scream(2);
-                    }
-                    return true;
-                }
-                Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
-                if (Foxy.scream_) {
-                    if (show_pict_) {
-                        picture_.show_scream(3);
-                    } else {
-                        picture_.show_text_scream(3);
-                    }
-
-                    return true;
-                }
+                
                 found = true;
                 break;
             }
@@ -327,28 +323,7 @@ bool Game::look_cams() {
                          "off' or 'coff'"
                       << std::endl;
         }
-
-        // change energy
-        energy_.energy_mult_ = ldoor_.door_close_ + ldoor_.door_light_ + rdoor_.door_close_ +
-                               rdoor_.door_light_ + player_.cams_status_ + 1;
-        energy_.change_energy(cur_time_);
-
-        // check energy
-        if (energy_.cur_energy_ <= 0) {
-            if (energy_lost()) {
-                std::cout << "You lost" << std::endl;
-                return true;
-            }
-            std::cout << "You win!" << std::endl;
-            return true;
-        }
-
-        cur_time_ = std::chrono::steady_clock::now();
-        time_ = std::chrono::duration_cast<std::chrono::minutes>(cur_time_ - start_time_).count();
-
-        std::getline(std::cin, entered_cam);
     }
-    return false;
 }
 
 /// @brief creating of the animatronics

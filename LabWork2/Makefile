@@ -5,7 +5,7 @@ LGTESTFLAGS = -lgtest -lgtest_main -pthread
 
 DEPS = $(wildcard *.hpp)
 
-OBJ = Animatronic.o Cam.o Door.o Energy.o Fox.o Fredd.o Game.o Phone.o Player.o Random.o Picture.o Menu.o
+OBJ = Animatronic.o Cam.o Door.o Energy.o Fox.o Fredd.o Game.o Phone.o Player.o Random.o Picture.o Menu.o MiniPlayer.o MiniEnemy.o MiniAbility.o Minigame.o MiniBattleSystem.o MiniWarrior.o MiniMage.o MiniRogue.o MiniGoblin.o
 
 .PHONY: default
 default: all

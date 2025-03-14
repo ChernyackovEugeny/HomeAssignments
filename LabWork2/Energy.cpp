@@ -5,6 +5,8 @@ labwork2
 #include "Energy.hpp"
 #include <chrono>
 
+#include <iostream>
+
 Energy::Energy() : cur_energy_(100), energy_psecond_(0.08), energy_mult_(1) {
 }
 
@@ -16,7 +18,7 @@ void Energy::change_energy(std::chrono::steady_clock::time_point last_time) {
 
     cur_energy_ -=
         (energy_psecond_ * energy_mult_) *
-        (std::chrono::duration_cast<std::chrono::seconds>(cur_time - last_time).count() + 1);
+        std::chrono::duration_cast<std::chrono::seconds>(cur_time - last_time).count();
 }
 
 Energy::~Energy() {

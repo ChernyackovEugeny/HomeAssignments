@@ -6,6 +6,7 @@ labwork2
 #define MENU
 
 #include "Game.hpp"
+#include "Minigame.hpp"
 
 /**
  * @brief class describes the menu of the game
@@ -22,6 +23,8 @@ class Menu {
     void picture_check();
     void night_check();
     void start_night();
+    
+    void start_minigame();
 
     bool show_pict_; // push it in class Game
     int num_night_;  // push it in class Game

@@ -9,6 +9,9 @@ labwork2
 #include <chrono>
 #include <string>
 
+#include <atomic>
+#include <thread>
+
 #include "Animatronic.hpp"
 #include "Cam.hpp"
 #include "Door.hpp"
@@ -39,6 +42,9 @@ class Game {
   public:
     Game(int num_night, bool show_pict);
     void start_game();
+    
+    void updateGame(); // функция обновления состояния игры
+    
     ~Game();
 
   private:
@@ -47,8 +53,11 @@ class Game {
 
     void game();
     bool energy_lost();
-    bool look_cams();
-
+    void look_cams();
+    
+    std::atomic<bool> running; // флаг состояния игры
+    std::thread updateThread; // поток обновления состояния игры
+    
   protected:
     int num_night_;
     bool show_pict_;

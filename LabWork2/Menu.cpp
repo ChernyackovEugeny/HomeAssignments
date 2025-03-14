@@ -7,14 +7,27 @@ labwork2
 #include <iostream>
 #include <string>
 
-Menu::Menu() {
-    picture_check();
-}
+Menu::Menu() {}
 
 /// @brief menu of the game
 void Menu::menu() {
-    night_check();
-    start_night();
+    std::cout << "Welcome to menu, if you want to play Five Nights at Freddy's, enter '1'" << std::endl;
+    std::cout << "if you want to play card minigame, enter '2'" << std::endl;
+    int choice;
+    std::cin >> choice;
+    while (choice != 1 and choice != 2) {
+        std::cin >> choice;
+        std::cout << "Enter '1' or '2'" << std::endl;
+    }
+
+    if (choice == 1) {
+        picture_check();
+        night_check();
+        start_night();
+    }
+    else if (choice == 2) {
+        start_minigame();
+    }
 }
 
 /// @brief function check whether the game will show pictures or not
@@ -78,6 +91,12 @@ void Menu::night_check() {
 void Menu::start_night() {
     Game a(num_night_, show_pict_);
     a.start_game();
+}
+
+/// @brief function starts the minigame
+void Menu::start_minigame() {
+    Minigame b;
+    b.start();
 }
 
 Menu::~Menu() {
