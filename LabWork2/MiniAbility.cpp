@@ -1,3 +1,7 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "MiniAbility.hpp"
 
 MiniAbility::MiniAbility(std::string name, int damage, int manaCost) : name(name), damage(damage), manaCost(manaCost) {}

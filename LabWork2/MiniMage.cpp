@@ -1,3 +1,7 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "MiniMage.hpp"
 
 MiniMage::MiniMage() : MiniPlayer("Маг", 120, 100) {

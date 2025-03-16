@@ -1,3 +1,7 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #ifndef MINIPLAYER
 #define MINIPLAYER
 
@@ -5,6 +9,9 @@
 #include <vector>
 #include <string>
 
+/**
+ * @brief class describes the player
+ */
 class MiniPlayer {
 public:
     MiniPlayer(std::string name, int mana, int hp);

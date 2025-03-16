@@ -14,10 +14,24 @@ void Menu::menu() {
     std::cout << "Welcome to menu, if you want to play Five Nights at Freddy's, enter '1'" << std::endl;
     std::cout << "if you want to play card minigame, enter '2'" << std::endl;
     int choice;
-    std::cin >> choice;
-    while (choice != 1 and choice != 2) {
-        std::cin >> choice;
-        std::cout << "Enter '1' or '2'" << std::endl;
+    std::string entered;
+    std::cin >> entered;
+    while (true) {
+        try {
+            if (std::stoi(entered) == 1 or std::stoi(entered) == 2) {
+            choice = std::stoi(entered);
+                break;
+            } else {
+                std::cout << "The number is out of range" << std::endl;
+            }
+        } catch (const std::invalid_argument &e) {
+            std::cout << "It's not a number" << std::endl;
+        } catch (const std::out_of_range &e) {
+            std::cout << "The number is out of range" << std::endl;
+        }
+        std::cout << "Enter '1' or '2'"
+                  << std::endl;
+        std::cin >> entered;
     }
 
     if (choice == 1) {

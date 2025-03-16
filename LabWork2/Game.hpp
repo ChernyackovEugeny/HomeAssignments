@@ -43,7 +43,7 @@ class Game {
     Game(int num_night, bool show_pict);
     void start_game();
     
-    void updateGame(); // функция обновления состояния игры
+    void updateGame(); // updating the game state
     
     ~Game();
 
@@ -55,8 +55,8 @@ class Game {
     bool energy_lost();
     void look_cams();
     
-    std::atomic<bool> running; // флаг состояния игры
-    std::thread updateThread; // поток обновления состояния игры
+    std::atomic<bool> running; // flag of the game state
+    std::thread updateThread; // thread of updating the game
     
   protected:
     int num_night_;

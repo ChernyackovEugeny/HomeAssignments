@@ -10,7 +10,7 @@ labwork2
 Picture::Picture() {
 }
 
-/// @brief function shows pictures
+/// @brief function shows pictures on the cameras
 /// @param cam_name shows the name of the current camera
 /// @param bonnie shows whether Bonny is on the current camera or not
 /// @param chica shows whether Chica is on the current camera or not
@@ -122,6 +122,13 @@ void Picture::show_text_scream(int scream) {
     }
 }
 
+/// @brief function shows pictures in the office
+/// @param bonnie shows whether Bonny is near the office or not
+/// @param chica shows whether Chica is near the office or not
+/// @param left_light shows whether the left door light is on or off
+/// @param right_light shows whether the right door light is on or off
+/// @param left_close shows whether the left door is opened or not
+/// @param right_close shows whether the right door is opened or not
 void Picture::show_office(int bonnie, int chica, bool left_light, bool right_light, bool left_close, bool right_close) {
     std::string result = "arts/office";
     if (left_light) {

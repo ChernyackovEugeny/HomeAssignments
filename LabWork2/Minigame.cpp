@@ -1,3 +1,7 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "Minigame.hpp"
 #include "MiniWarrior.hpp"
 #include "MiniMage.hpp"
@@ -24,6 +28,7 @@ Minigame::Minigame() {
     enemy = new MiniGoblin();
 }
 
+/// @brief function describes the start of the game
 void Minigame::start() {
     std::cout << "Начинается битва!" << std::endl;
     battleSystem.startBattle(*player, *enemy);

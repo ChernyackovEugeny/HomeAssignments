@@ -1,3 +1,7 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "MiniGoblin.hpp"
 
 MiniGoblin::MiniGoblin() : MiniEnemy("Гоблин", 80, 100) {

@@ -1,6 +1,11 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "MiniBattleSystem.hpp"
 #include <iostream>
 
+/// @brief function describes the battle
 void MiniBattleSystem::startBattle(MiniPlayer& player, MiniEnemy& enemy) {
     std::cout << "Битва начинается! Ваш противник: " << enemy.getName() << " (HP: " << enemy.getHP() << ")" << std::endl;
 
@@ -11,18 +16,14 @@ void MiniBattleSystem::startBattle(MiniPlayer& player, MiniEnemy& enemy) {
                       << " (Мана: " << player.getAbilities()[i].getManaCost() 
                       << ", Урон: " << player.getAbilities()[i].getDamage() << ")" << std::endl;
         }
-
         int choice;
         std::cin >> choice;
         player.useAbility(choice, enemy);
-
         if (enemy.getHP() <= 0) {
             std::cout << "Поздравляем! Вы победили" << enemy.getName() << "!";
             break;
         }
-
         enemy.attack(player);
-
         if (player.getHP() <= 0) {
             std::cout << "Вы проиграли! " << enemy.getName() << " оказался сильнее.";
             break;

@@ -1,12 +1,18 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "MiniPlayer.hpp"
 #include <iostream>
 
 MiniPlayer::MiniPlayer(std::string name, int mana, int hp) : name(name), mana(mana), hp(hp) {}
 
+/// @brief function describes the adding of ability
 void MiniPlayer::addAbility(const MiniAbility& ability) {
     abilities.push_back(ability);
 }
 
+/// @brief function describes the usage of ability
 void MiniPlayer::useAbility(int index, MiniPlayer& target) {
     if (index >= 0 and index < int(abilities.size()) and mana >= abilities[index].getManaCost()) {
         mana -= abilities[index].getManaCost();

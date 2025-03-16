@@ -1,3 +1,7 @@
+/* Chernyackov Eugeny chernyackov.eugeny@yandex.ru
+labwork2
+*/
+
 #include "MiniWarrior.hpp"
 
 MiniWarrior::MiniWarrior() : MiniPlayer("Воин", 100, 100) {

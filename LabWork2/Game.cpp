@@ -24,6 +24,7 @@ void Game::start_game() {
     create_anims();
     start_time_ = std::chrono::steady_clock::now();
     
+    // turning on the game state flag
     running = true;
 
     game();
@@ -33,7 +34,7 @@ void Game::start_game() {
 void Game::game() {
     cur_time_ = std::chrono::steady_clock::now();
     
-    // запускаем поток обновления игры
+    // turning on the thread of updating the game
     updateThread = std::thread(&Game::updateGame, this);
 
     while (running) {
@@ -154,17 +155,16 @@ void Game::game() {
             player_.fan_status_ = false;
         }
     }
-    updateThread.join();
+    updateThread.join(); // turn off the thread
 }
 
+/// @brief the thread of updating the game
 void Game::updateGame() {
     while (running) {
-        // обновление каждую секунду
+        // updating every second
         std::this_thread::sleep_for(std::chrono::seconds(1));
         
-        // обновляем аниматроников, энергию
-        // если заскримели, завершить поток
-        
+        // updating energy and moving animatronics, checking screamers, victory and amount of energy        
         // change the energy
         energy_.change_energy(cur_time_);
 
