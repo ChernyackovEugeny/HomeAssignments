@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['picture_5fcheck_55',['picture_check',['../classMenu.html#a7ae9239247b2f4581302d3ec64388ea8',1,'Menu']]],
-  ['push_5fnose_56',['push_nose',['../classPlayer.html#a11e34a5ef5b58ce69158d972d992e459',1,'Player']]]
+  ['night_5fcheck_84',['night_check',['../classMenu.html#a583938a2665efdbfeb506d7cfdf9e0da',1,'Menu']]]
 ];

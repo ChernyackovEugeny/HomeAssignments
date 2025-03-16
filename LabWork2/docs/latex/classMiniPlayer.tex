@@ -1,0 +1,72 @@
+\hypertarget{classMiniPlayer}{}\doxysection{Mini\+Player Class Reference}
+\label{classMiniPlayer}\index{MiniPlayer@{MiniPlayer}}
+
+
+class describes the player  
+
+
+
+
+{\ttfamily \#include $<$Mini\+Player.\+hpp$>$}
+
+
+
+Inheritance diagram for Mini\+Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMiniPlayer__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMiniPlayer_a6c0826078be060067e5d772a4e60f614}\label{classMiniPlayer_a6c0826078be060067e5d772a4e60f614}} 
+{\bfseries Mini\+Player} (std\+::string name, int mana, int hp)
+\item 
+\mbox{\Hypertarget{classMiniPlayer_ae71d0a94a29722b11091c94a62d2ba49}\label{classMiniPlayer_ae71d0a94a29722b11091c94a62d2ba49}} 
+void \mbox{\hyperlink{classMiniPlayer_ae71d0a94a29722b11091c94a62d2ba49}{add\+Ability}} (const \mbox{\hyperlink{classMiniAbility}{Mini\+Ability}} \&ability)
+\begin{DoxyCompactList}\small\item\em function describes the adding of ability \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMiniPlayer_afb7f8f669f0ab041be8bec0c141761bd}\label{classMiniPlayer_afb7f8f669f0ab041be8bec0c141761bd}} 
+void \mbox{\hyperlink{classMiniPlayer_afb7f8f669f0ab041be8bec0c141761bd}{use\+Ability}} (int index, \mbox{\hyperlink{classMiniPlayer}{Mini\+Player}} \&target)
+\begin{DoxyCompactList}\small\item\em function describes the usage of ability \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMiniPlayer_a8187b240dfe62d7aeb00bda39a03eabc}\label{classMiniPlayer_a8187b240dfe62d7aeb00bda39a03eabc}} 
+int {\bfseries get\+Mana} () const
+\item 
+\mbox{\Hypertarget{classMiniPlayer_a604987228294dfa61d58553e1197011e}\label{classMiniPlayer_a604987228294dfa61d58553e1197011e}} 
+int {\bfseries get\+HP} () const
+\item 
+\mbox{\Hypertarget{classMiniPlayer_a3ad403aab8a969d4565643d501a67165}\label{classMiniPlayer_a3ad403aab8a969d4565643d501a67165}} 
+const std\+::vector$<$ \mbox{\hyperlink{classMiniAbility}{Mini\+Ability}} $>$ \& {\bfseries get\+Abilities} () const
+\item 
+\mbox{\Hypertarget{classMiniPlayer_af4978fc19a7ec4849ba02117e3fb13e5}\label{classMiniPlayer_af4978fc19a7ec4849ba02117e3fb13e5}} 
+std\+::string {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{classMiniPlayer_a0f59c7a7677b0b997b1bfe4dee5dba12}\label{classMiniPlayer_a0f59c7a7677b0b997b1bfe4dee5dba12}} 
+void {\bfseries take\+Damage} (int damage)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMiniPlayer_aef1adc4a9669a16449662ff609802f6a}\label{classMiniPlayer_aef1adc4a9669a16449662ff609802f6a}} 
+std\+::string {\bfseries name}
+\item 
+\mbox{\Hypertarget{classMiniPlayer_a2fef037bb5220db60aa68e57e0501595}\label{classMiniPlayer_a2fef037bb5220db60aa68e57e0501595}} 
+int {\bfseries mana}
+\item 
+\mbox{\Hypertarget{classMiniPlayer_a6f4d386277ff692c215ca90210a13696}\label{classMiniPlayer_a6f4d386277ff692c215ca90210a13696}} 
+int {\bfseries hp}
+\item 
+\mbox{\Hypertarget{classMiniPlayer_ab7c473b47e9ca1b59f6536f437ff3e13}\label{classMiniPlayer_ab7c473b47e9ca1b59f6536f437ff3e13}} 
+std\+::vector$<$ \mbox{\hyperlink{classMiniAbility}{Mini\+Ability}} $>$ {\bfseries abilities}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class describes the player 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Mini\+Player.\+hpp\item 
+Mini\+Player.\+cpp\end{DoxyCompactItemize}

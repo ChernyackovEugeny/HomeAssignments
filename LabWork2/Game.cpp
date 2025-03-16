@@ -23,7 +23,7 @@ void Game::start_game() {
     create_cams();
     create_anims();
     start_time_ = std::chrono::steady_clock::now();
-    
+
     // turning on the game state flag
     running = true;
 
@@ -33,12 +33,12 @@ void Game::start_game() {
 /// @brief playing the game
 void Game::game() {
     cur_time_ = std::chrono::steady_clock::now();
-    
+
     // turning on the thread of updating the game
     updateThread = std::thread(&Game::updateGame, this);
 
     while (running) {
-    
+
         std::string entered;
         std::getline(std::cin, entered);
         if (not running) {
@@ -46,7 +46,7 @@ void Game::game() {
             std::cin.setstate(std::ios::failbit);
             break;
         }
-        
+
         // payers action
         // cams check
         if (entered == "cams on" or entered == "con") {
@@ -59,7 +59,7 @@ void Game::game() {
             std::cin.setstate(std::ios::failbit);
             break;
         }
-        
+
         // doors light
         if (entered == "light left door" or entered == "lld") {
             ldoor_.door_light_ = true;
@@ -119,11 +119,11 @@ void Game::game() {
                 std::cout << "The right door is opened" << std::endl;
             }
         }
-        
-        if (show_pict_) {
-            picture_.show_office(Bonnie.place_, Chica.place_, ldoor_.door_light_, rdoor_.door_light_, ldoor_.door_close_, rdoor_.door_close_);
-        }
 
+        if (show_pict_) {
+            picture_.show_office(Bonnie.place_, Chica.place_, ldoor_.door_light_,
+                                 rdoor_.door_light_, ldoor_.door_close_, rdoor_.door_close_);
+        }
 
         // info about light, doors, energy, energy consumption
         if (entered == "info" and not show_pict_) {
@@ -163,8 +163,8 @@ void Game::updateGame() {
     while (running) {
         // updating every second
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        
-        // updating energy and moving animatronics, checking screamers, victory and amount of energy        
+
+        // updating energy and moving animatronics, checking screamers, victory and amount of energy
         // change the energy
         energy_.change_energy(cur_time_);
 
@@ -172,11 +172,10 @@ void Game::updateGame() {
         if (energy_.cur_energy_ <= 0) {
             running = false;
             fclose(stdin);
-            
+
             if (energy_lost()) {
                 std::cout << "You lost" << std::endl;
-            }
-            else {
+            } else {
                 std::cout << "You win!" << std::endl;
             }
         }
@@ -185,7 +184,7 @@ void Game::updateGame() {
         Bonnie.move_anim(gen_rand_, ldoor_.door_close_, time_);
         Chica.move_anim(gen_rand_, rdoor_.door_close_, time_);
         Foxy.move_anim(gen_rand_, ldoor_.door_close_, time_);
-        
+
         Freddy.move_anim(gen_rand_, rdoor_.door_close_, false,
                          time_); // 'false' because moving freddy out of cameras
 
@@ -277,7 +276,7 @@ void Game::look_cams() {
 
     std::string entered_cam = "";
     while (entered_cam != "cams off" and entered_cam != "coff" and running) {
-    
+
         std::string entered_cam;
         std::getline(std::cin, entered_cam);
         if (!running) {
@@ -288,7 +287,7 @@ void Game::look_cams() {
         if (entered_cam == "cams off" or entered_cam == "coff") {
             break;
         }
-        
+
         // everything will work if player enter 1a instead of 1A
         for (char &c : entered_cam) {
             c = std::toupper(static_cast<unsigned char>(c));
@@ -307,13 +306,12 @@ void Game::look_cams() {
                 } else {
                     picture_.show_text(cam_names_[i], bonnie, chica, foxy, foxy_stage, freddy);
                 }
-                
+
                 // moving Freddy here, because his moving depends on checking cameras by player
-                if (cam_names_[i] == Freddy.way_[Freddy.place_ - 1] and
-                           cam_names_[i] == "4B") {
+                if (cam_names_[i] == Freddy.way_[Freddy.place_ - 1] and cam_names_[i] == "4B") {
                     Freddy.move_anim(gen_rand_, rdoor_.door_close_, true, time_);
                 }
-                
+
                 found = true;
                 break;
             }

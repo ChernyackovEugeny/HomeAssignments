@@ -129,7 +129,8 @@ void Picture::show_text_scream(int scream) {
 /// @param right_light shows whether the right door light is on or off
 /// @param left_close shows whether the left door is opened or not
 /// @param right_close shows whether the right door is opened or not
-void Picture::show_office(int bonnie, int chica, bool left_light, bool right_light, bool left_close, bool right_close) {
+void Picture::show_office(int bonnie, int chica, bool left_light, bool right_light, bool left_close,
+                          bool right_close) {
     std::string result = "arts/office";
     if (left_light) {
         result = result + "_ll";

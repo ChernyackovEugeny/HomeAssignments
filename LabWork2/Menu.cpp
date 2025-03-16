@@ -7,11 +7,13 @@ labwork2
 #include <iostream>
 #include <string>
 
-Menu::Menu() {}
+Menu::Menu() {
+}
 
 /// @brief menu of the game
 void Menu::menu() {
-    std::cout << "Welcome to menu, if you want to play Five Nights at Freddy's, enter '1'" << std::endl;
+    std::cout << "Welcome to menu, if you want to play Five Nights at Freddy's, enter '1'"
+              << std::endl;
     std::cout << "if you want to play card minigame, enter '2'" << std::endl;
     int choice;
     std::string entered;
@@ -19,7 +21,7 @@ void Menu::menu() {
     while (true) {
         try {
             if (std::stoi(entered) == 1 or std::stoi(entered) == 2) {
-            choice = std::stoi(entered);
+                choice = std::stoi(entered);
                 break;
             } else {
                 std::cout << "The number is out of range" << std::endl;
@@ -29,8 +31,7 @@ void Menu::menu() {
         } catch (const std::out_of_range &e) {
             std::cout << "The number is out of range" << std::endl;
         }
-        std::cout << "Enter '1' or '2'"
-                  << std::endl;
+        std::cout << "Enter '1' or '2'" << std::endl;
         std::cin >> entered;
     }
 
@@ -38,8 +39,7 @@ void Menu::menu() {
         picture_check();
         night_check();
         start_night();
-    }
-    else if (choice == 2) {
+    } else if (choice == 2) {
         start_minigame();
     }
 }

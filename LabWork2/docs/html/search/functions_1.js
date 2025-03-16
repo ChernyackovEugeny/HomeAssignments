@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5frand_50',['get_rand',['../classRandom.html#a09dd974c488b3b15cb0902d88de60e69',1,'Random']]]
+  ['change_5fenergy_79',['change_energy',['../classEnergy.html#af6e6d6b2403882ad4dd827eb6519134d',1,'Energy']]]
 ];

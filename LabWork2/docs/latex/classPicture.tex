@@ -13,13 +13,15 @@ class is used to get feedback from the game
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classPicture_a426ca192fcc0ce88fdc2307e7356883e}{show\+\_\+picture}} (std\+::string cam\+\_\+name, bool bonnie, bool chica, bool foxy, int foxy\+\_\+stage, bool freddy)
-\begin{DoxyCompactList}\small\item\em function shows pictures \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em function shows pictures on the cameras \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPicture_af3eb6830b68498fb7784826093012d9a}{show\+\_\+scream}} (int scream)
 \begin{DoxyCompactList}\small\item\em function screams the player with picture \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPicture_a61dc15de888105f08d1d715a90266855}{show\+\_\+text}} (std\+::string cam\+\_\+name, bool bonnie, bool chica, bool foxy, int foxy\+\_\+stage, bool freddy)
 \begin{DoxyCompactList}\small\item\em function text feedback from the game \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPicture_addde0656ac797f5042e1d7d8bd1940b3}{show\+\_\+text\+\_\+scream}} (int scream)
-\begin{DoxyCompactList}\small\item\em function screams the player with text \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em function screams the player with text \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPicture_a3c4b8c8bdfbfdbe95ac359f5038a619a}{show\+\_\+office}} (int bonnie, int chica, bool left\+\_\+light, bool right\+\_\+light, bool left\+\_\+close, bool right\+\_\+close)
+\begin{DoxyCompactList}\small\item\em function shows pictures in the office \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,6 +40,31 @@ class {\bfseries Game}
 class is used to get feedback from the game 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPicture_a3c4b8c8bdfbfdbe95ac359f5038a619a}\label{classPicture_a3c4b8c8bdfbfdbe95ac359f5038a619a}} 
+\index{Picture@{Picture}!show\_office@{show\_office}}
+\index{show\_office@{show\_office}!Picture@{Picture}}
+\doxysubsubsection{\texorpdfstring{show\_office()}{show\_office()}}
+{\footnotesize\ttfamily void Picture\+::show\+\_\+office (\begin{DoxyParamCaption}\item[{int}]{bonnie,  }\item[{int}]{chica,  }\item[{bool}]{left\+\_\+light,  }\item[{bool}]{right\+\_\+light,  }\item[{bool}]{left\+\_\+close,  }\item[{bool}]{right\+\_\+close }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+function shows pictures in the office 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bonnie} & shows whether Bonny is near the office or not \\
+\hline
+{\em chica} & shows whether Chica is near the office or not \\
+\hline
+{\em left\+\_\+light} & shows whether the left door light is on or off \\
+\hline
+{\em right\+\_\+light} & shows whether the right door light is on or off \\
+\hline
+{\em left\+\_\+close} & shows whether the left door is opened or not \\
+\hline
+{\em right\+\_\+close} & shows whether the right door is opened or not \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classPicture_a426ca192fcc0ce88fdc2307e7356883e}\label{classPicture_a426ca192fcc0ce88fdc2307e7356883e}} 
 \index{Picture@{Picture}!show\_picture@{show\_picture}}
 \index{show\_picture@{show\_picture}!Picture@{Picture}}
@@ -46,7 +73,7 @@ class is used to get feedback from the game
 
 
 
-function shows pictures 
+function shows pictures on the cameras 
 
 
 \begin{DoxyParams}{Parameters}

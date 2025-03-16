@@ -4,7 +4,9 @@ labwork2
 
 #include "MiniAbility.hpp"
 
-MiniAbility::MiniAbility(std::string name, int damage, int manaCost) : name(name), damage(damage), manaCost(manaCost) {}
+MiniAbility::MiniAbility(std::string name, int damage, int manaCost)
+    : name(name), damage(damage), manaCost(manaCost) {
+}
 
 std::string MiniAbility::getName() const {
     return name;

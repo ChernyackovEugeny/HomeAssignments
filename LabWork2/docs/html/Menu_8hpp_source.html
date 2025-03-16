@@ -73,31 +73,35 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define MENU</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Game.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classMenu.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMenu.html">Menu</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classGame.html">Game</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classMenu.html">Menu</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#abc035cac50f00791a243d91e71f44b0d">menu</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    ~<a class="code" href="classMenu.html">Menu</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a7ae9239247b2f4581302d3ec64388ea8">picture_check</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a583938a2665efdbfeb506d7cfdf9e0da">night_check</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a6b77730a67a9434295424cb509a3a406">start_night</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> show_pict_; <span class="comment">// push it in class Game</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> num_night_;  <span class="comment">// push it in class Game</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">class describes the game</div><div class="ttdef"><b>Definition:</b> Game.hpp:28</div></div>
-<div class="ttc" id="aclassMenu_html"><div class="ttname"><a href="classMenu.html">Menu</a></div><div class="ttdoc">class describes the menu of the game</div><div class="ttdef"><b>Definition:</b> Menu.hpp:13</div></div>
-<div class="ttc" id="aclassMenu_html_a583938a2665efdbfeb506d7cfdf9e0da"><div class="ttname"><a href="classMenu.html#a583938a2665efdbfeb506d7cfdf9e0da">Menu::night_check</a></div><div class="ttdeci">void night_check()</div><div class="ttdoc">function checks the number of night</div><div class="ttdef"><b>Definition:</b> Menu.cpp:51</div></div>
-<div class="ttc" id="aclassMenu_html_a6b77730a67a9434295424cb509a3a406"><div class="ttname"><a href="classMenu.html#a6b77730a67a9434295424cb509a3a406">Menu::start_night</a></div><div class="ttdeci">void start_night()</div><div class="ttdoc">function starts the night</div><div class="ttdef"><b>Definition:</b> Menu.cpp:78</div></div>
-<div class="ttc" id="aclassMenu_html_a7ae9239247b2f4581302d3ec64388ea8"><div class="ttname"><a href="classMenu.html#a7ae9239247b2f4581302d3ec64388ea8">Menu::picture_check</a></div><div class="ttdeci">void picture_check()</div><div class="ttdoc">function check whether the game will show pictures or not</div><div class="ttdef"><b>Definition:</b> Menu.cpp:21</div></div>
-<div class="ttc" id="aclassMenu_html_abc035cac50f00791a243d91e71f44b0d"><div class="ttname"><a href="classMenu.html#abc035cac50f00791a243d91e71f44b0d">Menu::menu</a></div><div class="ttdeci">void menu()</div><div class="ttdoc">menu of the game</div><div class="ttdef"><b>Definition:</b> Menu.cpp:15</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Minigame.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classMenu.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMenu.html">Menu</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classGame.html">Game</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classMenu.html">Menu</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#abc035cac50f00791a243d91e71f44b0d">menu</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="classMenu.html">Menu</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a7ae9239247b2f4581302d3ec64388ea8">picture_check</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a583938a2665efdbfeb506d7cfdf9e0da">night_check</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a6b77730a67a9434295424cb509a3a406">start_night</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMenu.html#a824a24c2dd128359a9c59041766617b0">start_minigame</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> show_pict_; <span class="comment">// push it in class Game</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> num_night_;  <span class="comment">// push it in class Game</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">class describes the game</div><div class="ttdef"><b>Definition:</b> Game.hpp:31</div></div>
+<div class="ttc" id="aclassMenu_html"><div class="ttname"><a href="classMenu.html">Menu</a></div><div class="ttdoc">class describes the menu of the game</div><div class="ttdef"><b>Definition:</b> Menu.hpp:14</div></div>
+<div class="ttc" id="aclassMenu_html_a583938a2665efdbfeb506d7cfdf9e0da"><div class="ttname"><a href="classMenu.html#a583938a2665efdbfeb506d7cfdf9e0da">Menu::night_check</a></div><div class="ttdeci">void night_check()</div><div class="ttdoc">function checks the number of night</div><div class="ttdef"><b>Definition:</b> Menu.cpp:78</div></div>
+<div class="ttc" id="aclassMenu_html_a6b77730a67a9434295424cb509a3a406"><div class="ttname"><a href="classMenu.html#a6b77730a67a9434295424cb509a3a406">Menu::start_night</a></div><div class="ttdeci">void start_night()</div><div class="ttdoc">function starts the night</div><div class="ttdef"><b>Definition:</b> Menu.cpp:105</div></div>
+<div class="ttc" id="aclassMenu_html_a7ae9239247b2f4581302d3ec64388ea8"><div class="ttname"><a href="classMenu.html#a7ae9239247b2f4581302d3ec64388ea8">Menu::picture_check</a></div><div class="ttdeci">void picture_check()</div><div class="ttdoc">function check whether the game will show pictures or not</div><div class="ttdef"><b>Definition:</b> Menu.cpp:48</div></div>
+<div class="ttc" id="aclassMenu_html_a824a24c2dd128359a9c59041766617b0"><div class="ttname"><a href="classMenu.html#a824a24c2dd128359a9c59041766617b0">Menu::start_minigame</a></div><div class="ttdeci">void start_minigame()</div><div class="ttdoc">function starts the minigame</div><div class="ttdef"><b>Definition:</b> Menu.cpp:111</div></div>
+<div class="ttc" id="aclassMenu_html_abc035cac50f00791a243d91e71f44b0d"><div class="ttname"><a href="classMenu.html#abc035cac50f00791a243d91e71f44b0d">Menu::menu</a></div><div class="ttdeci">void menu()</div><div class="ttdoc">menu of the game</div><div class="ttdef"><b>Definition:</b> Menu.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
