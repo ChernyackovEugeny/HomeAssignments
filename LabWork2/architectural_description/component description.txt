@@ -1,4 +1,4 @@
-Component Structure Description
+Component Structure Description 
 
 The system consists of the following main components:
 Game: The core of the system, managing all interactions between components.
